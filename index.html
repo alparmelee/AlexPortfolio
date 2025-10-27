@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexander Lynn - Project Leader Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="icon.png">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url('Portfolio.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #374151;
+        }
+
+        /* Project Card specific styles */
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 1.25rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Button specific styles */
+        .btn-primary {
+            background: linear-gradient(to right, #6366f1, #8b5cf6);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(to right, #4f46e5, #7c3aed);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 6px -2px rgba(0, 0, 0, 0.08);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(to right, #4b5563, #6b7280);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-secondary:hover {
+            background: linear-gradient(to right, #374151, #4b5563);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 6px -2px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Header animation */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-down {
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        /* Carousel specific styles */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Style the iframe/video inside the carousel for fullscreen within the container */
+        .carousel-slide iframe,
+        .carousel-slide video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Use 'cover' for iframes/videos to fill the space */
+            border-radius: 0.75rem;
+        }
+        /* Specific carousel slide styles */
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none; /* Hidden by default */
+            transition: opacity 0.5s ease-in-out;
+            background-color: #000; /* Fallback for media loading */
+        }
+        .carousel-slide.active {
+            display: block; /* Show active slide */
+            opacity: 1;
+        }
+        
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.75rem 0.5rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .carousel-nav-btn.prev {
+            left: 0.5rem;
+        }
+        .carousel-nav-btn.next {
+            right: 0.5rem;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .carousel-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        /* Navbar specific styles */
+        .navbar {
+            position: fixed; /* Keep navbar at the top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95); /* Slightly less transparent than cards */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000; /* Ensure it's above other content */
+            border-bottom-left-radius: 1.25rem; /* Rounded bottom corners */
+            border-bottom-right-radius: 1.25rem;
+        }
+        .navbar-link {
+            color: #4a5568; /* Dark grey text */
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease-in-out;
+        }
+        .navbar-link:hover {
+            background-color: #e2e8f0; /* Light grey on hover */
+            color: #2d3748; /* Darker text on hover */
+        }
+        .navbar-link.active {
+            background: linear-gradient(to right, #6366f1, #8b5cf6); /* Primary button gradient */
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="min-h-screen flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8">
+
+        <nav class="navbar w-full py-4 px-6 flex justify-center">
+            <div class="flex space-x-6">
+                <a href="index.html" class="navbar-link active">Work</a>
+                <a href="about.html" class="navbar-link">About</a>
+                <a href="contact.html" class="navbar-link">Contact</a>
+            </div>
+        </nav>
+
+        <header class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-20">
+            <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-4 leading-tight tracking-tight">
+                Alexander Lynn
+            </h1>
+            <p class="text-xl sm:text-2xl text-indigo-700 font-bold drop-shadow-sm">
+                Project Leader | University of Central Florida
+            </p>
+            <p class="mt-4 text-lg text-gray-700 leading-relaxed">
+                Welcome to my portfolio! Here you'll find a selection of projects demonstrating my skills in game development, programming, and team leadership.
+            </p>
+        </header>
+
+        <section class="w-full max-w-5xl">
+            <h2 class="text-4xl font-bold text-gray-800 mb-10 text-center">My Projects</h2>
+
+            <div class="project-card p-8 mb-12 flex flex-col lg:flex-row-reverse items-start lg:space-x-reverse lg:space-x-8">
+                <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-3">David's Mighty Men</h3>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        A contract project where I serve as the Creative Director, Programmer, and UI Designer. I oversee all aspects of development, ensuring alignment with the project's vision.
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        <b>Key Responsibilities & Contributions:</b>
+                        <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1">
+                            <li><b>Led a team of six,</b> directing the overall vision and managing quality across all departments.</li>
+                            <li><b>Prototyped</b> every playable movement and combat mechanic, establishing the core player engagement foundation.</li>
+                            <li><b>Implemented all UI elements,</b> guaranteeing seamless player interaction.</li>
+                            <li>Oversee all aspects of game development, including level design, gameplay mechanics, and artistic direction.</li>
+                        </ul>
+                    </p>
+                    <p class="text-gray-800 font-semibold mb-2">Technologies Used:</p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                        <li>Unity / Unreal (Inferred Game Engine)</li>
+                        <li>Programming (C# / Blueprints)</li>
+                        <li>Game Design, UI/UX Design, Team Leadership</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-3">
+                         <a href="#" target="_blank" class="btn-primary" disabled style="opacity: 0.6; cursor: not-allowed;">
+                            Project Demo (Unavailable)
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div class="carousel-container" data-carousel-id="davidsmightymen">
+                        <div class="carousel-slide active">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/fpigtkv34j8?si=Zdl2GzGsNH-Bmg2P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <h4 class="text-center text-white p-2 absolute bottom-0 w-full bg-black bg-opacity-50">Media Unavailable - Contract Project</h4>
+                        </div>
+                        <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
+                        <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
+                        <div class="carousel-dots"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card p-8 mb-12 flex flex-col lg:flex-row-reverse items-start lg:space-x-reverse lg:space-x-8">
+                <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-3">Prodigal Lead Team Adventure</h3>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        A solo passion project based off of <b>Sonic Adventure!</b> This project demonstrates my advanced skills in Unreal Engine, focusing on core mechanics, UI/UX, and extensive blueprint scripting.
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        <b>Key Accomplishments:</b>
+                        <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1">
+                            <li>Developed a complex <b>character creator system</b> inspired by Nintendo’s Mii Maker in <b>UE5</b> using <b>Blueprints, Widgets, and Data Tables</b>.</li>
+                            <li>Implemented the same system to customize dozens of NPCs and <b>13 unique playable characters</b>.</li>
+                            <li>Created accurate level block outs of real-life locations with proper scaling, lighting, and proportions.</li>
+                            <li>Achieved <b>full controller compatibility</b> for all gameplay and UI elements.</li>
+                        </ul>
+                    </p>
+                    <p class="text-gray-800 font-semibold mb-2">Technologies Used:</p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                        <li>Unreal Engine 5 (UE5)</li>
+                        <li>Blueprints, Widgets, Data Tables</li>
+                        <li>Figma (Software for UI/UX Prototyping)</li>
+                        <li>Programming, Game Design, Level Design</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-3">
+                         <a href="#" target="_blank" class="btn-primary" disabled style="opacity: 0.6; cursor: not-allowed;">
+                            Live Build (WIP)
+                        </a>
+                        </div>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div class="carousel-container" data-carousel-id="prodigal">
+                        <div class="carousel-slide active">
+                            <h4 class="text-center text-white p-2">Full Environment Showcase with Gameplay</h4>
+                            <iframe 
+                                src="https://www.youtube.com/embed/Us2jN8olN6M?autoplay=0&controls=1&showinfo=0&rel=0" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                         <div class="carousel-slide">
+                            <h4 class="text-center text-white p-2">Character Select Showcase</h4>
+                            <iframe 
+                                src="https://www.youtube.com/embed/uDDSRWtMT84?autoplay=0&controls=1&showinfo=0&rel=0" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
+                        <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
+                        <div class="carousel-dots"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card p-8 mb-12 flex flex-col lg:flex-row items-start lg:space-x-8">
+                <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-3">The Scale of Imagination</h3>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        A fun 3rd Person, educational, Foddyian platformer based on the scale of the universe simulation. The game takes the player on a journey from the smallest theoretical units to the entire known universe, implementing a quiz-save system for education.
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        I worked on this project with <b>6 other developers as a Producer and Lead Level Designer</b> over the course of 2 months.
+                        <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1">
+                            <li><b>Led a team of 7,</b> organizing weekly tasks, roles, and project milestones.</li>
+                            <li>Implemented <b>anti-gravity mechanic</b> and <b>trampoline system</b> using Blueprints in <b>Unreal Engine 5</b>.</li>
+                            <li>Led development of game story, themes, and main level layout.</li>
+                            <li>Balanced a fun 3D platformer with effective educational elements.</li>
+                        </ul>
+                    </p>
+                    <p class="text-gray-800 font-semibold mb-2">Technologies Used:</p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                        <li>Unreal Engine 5 (UE5)</li>
+                        <li>Blueprints, Game Design</li>
+                        <li>Project Management, Team Leadership</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-3">
+                         <a href="#" target="_blank" class="btn-primary" disabled style="opacity: 0.6; cursor: not-allowed;">
+                            Live Build (WIP)
+                        </a>
+                        </div>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div class="carousel-container" data-carousel-id="scaleofimagination">
+                        <div class="carousel-slide active">
+                            <h4 class="text-center text-white p-2">Full Playthrough Video</h4>
+                            <iframe 
+                                src="https://www.youtube.com/embed/Q1VWuemAhhw?autoplay=0&controls=1&showinfo=0&rel=0" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
+                        <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
+                        <div class="carousel-dots"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card p-8 mb-12 flex flex-col lg:flex-row-reverse items-start lg:space-x-reverse lg:space-x-8">
+                <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-3">On Your Feet!</h3>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        <b>On Your Feet!</b> is a 2D Action-Adventure platformer focused on the game of soccer. Aliens are invading the Earth, and you must use your soccer skills to fight for the world’s most popular game! I am currently collaborating with a friend, focusing on the game's core design and creative direction.
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        <b>Key Responsibilities & Contributions:</b>
+                        <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1">
+                            <li>Creative Director: Oversaw the project’s creative vision and alignment.</li>
+                            <li>Designed several unique levels that drive user engagement.</li>
+                            <li>Developed design documentation for concepts, story, and mechanics pipelines.</li>
+                            <li>Conducted playtesting sessions and iterated on designs to improve player experience.</li>
+                        </ul>
+                    </p>
+                    <p class="text-gray-800 font-semibold mb-2">Technologies Used:</p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-1">
+                        <li>Unity Engine</li>
+                        <li>C# (Programming Language)</li>
+                        <li>Game Design, Level Design, Project Management</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://github.com/alparmelee/On-Your-Feet" target="_blank" class="btn-secondary">
+                            View Repository
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full">
+                    <div class="carousel-container" data-carousel-id="onyourfeet_new">
+                        <div class="carousel-slide active">
+                            <h4 class="text-center text-white p-2">Beta Version Full Gameplay</h4>
+                            <iframe 
+                                src="https://www.youtube.com/embed/aC72K1Y5Gns?autoplay=0&controls=1&showinfo=0&rel=0" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
+                        <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
+                        <div class="carousel-dots"></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="mt-12 text-center text-gray-600 text-sm">
+            <p>&copy; 2025 Alexander Lynn. All rights reserved.</p>
+            <p>Project Leader, University of Central Florida</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Select all carousel containers
+            const carousels = document.querySelectorAll('.carousel-container');
+
+            carousels.forEach(carousel => {
+                const slides = carousel.querySelectorAll('.carousel-slide');
+                
+                // Pause YouTube video function
+                function pauseYouTubeVideo(slide) {
+                    const iframe = slide.querySelector('iframe');
+                    if (iframe && iframe.contentWindow) {
+                        // YouTube Player API command to pause
+                        // We use postMessage to communicate with the iframe securely
+                        iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                    }
+                }
+
+                // Check if there are slides, if not, hide controls
+                if (slides.length <= 1) {
+                    const prevBtn = carousel.querySelector('.carousel-nav-btn.prev');
+                    const nextBtn = carousel.querySelector('.carousel-nav-btn.next');
+                    const dotsContainer = carousel.querySelector('.carousel-dots');
+                    if (prevBtn) prevBtn.style.display = 'none';
+                    if (nextBtn) nextBtn.style.display = 'none';
+                    if (dotsContainer) dotsContainer.style.display = 'none';
+                    if (slides.length === 1) slides[0].classList.add('active'); // Ensure single slide is active
+                    return; 
+                }
+
+                const prevBtn = carousel.querySelector('.carousel-nav-btn.prev');
+                const nextBtn = carousel.querySelector('.carousel-nav-btn.next');
+                const dotsContainer = carousel.querySelector('.carousel-dots');
+                let currentSlideIndex = 0;
+
+                // Create dot indicators
+                slides.forEach((_, index) => {
+                    const dot = document.createElement('span');
+                    dot.classList.add('carousel-dot');
+                    if (index === 0) {
+                        dot.classList.add('active');
+                    }
+                    dot.addEventListener('click', () => showSlide(index));
+                    dotsContainer.appendChild(dot);
+                });
+
+                const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+                // Function to show a specific slide
+                function showSlide(index) {
+                    // Pause all media before changing slide
+                    slides.forEach(slide => {
+                        const video = slide.querySelector('video');
+                        if (video) {
+                            video.pause();
+                            video.currentTime = 0; 
+                        }
+                        pauseYouTubeVideo(slide); // Pause YouTube videos
+                        slide.classList.remove('active');
+                    });
+
+                    // Deactivate all dots
+                    dots.forEach(dot => dot.classList.remove('active'));
+
+                    // Activate the selected slide and dot
+                    slides[index].classList.add('active');
+                    dots[index].classList.add('active');
+
+                    currentSlideIndex = index;
+                }
+
+                // Function to go to the next slide
+                function nextSlide() {
+                    let newIndex = currentSlideIndex + 1;
+                    if (newIndex >= slides.length) {
+                        newIndex = 0; // Loop back to the first slide
+                    }
+                    showSlide(newIndex);
+                }
+
+                // Function to go to the previous slide
+                function prevSlide() {
+                    let newIndex = currentSlideIndex - 1;
+                    if (newIndex < 0) {
+                        newIndex = slides.length - 1; // Loop to the last slide
+                    }
+                    showSlide(newIndex);
+                }
+
+                // Event listeners for navigation buttons
+                prevBtn.addEventListener('click', prevSlide);
+                nextBtn.addEventListener('click', nextSlide);
+
+                // Initialize the first slide
+                showSlide(currentSlideIndex);
+            });
+        });
+    </script>
+</body>
+</html>
