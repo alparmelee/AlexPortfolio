@@ -47,20 +47,23 @@
             box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 6px -2px rgba(0, 0, 0, 0.08);
         }
 
-        .btn-secondary {
-            background: linear-gradient(to right, #4b5563, #6b7280);
-            border: none;
-            color: white;
+        .btn-toggle {
             font-weight: 600;
             padding: 0.75rem 1.5rem;
             border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease-in-out;
         }
-        .btn-secondary:hover {
-            background: linear-gradient(to right, #374151, #4b5563);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 6px -2px rgba(0, 0, 0, 0.08);
+        .btn-toggle.active {
+            background: linear-gradient(to right, #6366f1, #8b5cf6);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .btn-toggle:not(.active) {
+            background-color: #e5e7eb; /* Gray-200 */
+            color: #4b5563; /* Gray-600 */
+        }
+        .btn-toggle:not(.active):hover {
+            background-color: #d1d5db; /* Gray-300 */
         }
 
         /* Header animation */
@@ -225,32 +228,41 @@
                     A Unreal Engine Combat Mechanics and UI Demonstration
                 </p>
                 <p class="mt-4 text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto">
-                    This project served as a deep dive into game development, focusing on implementing and polishing <b>responsive, state-based combat mechanics</b> and core <b>User Interface (UI)</b> systems using the <b>Unreal Engine</b>.
+                    This project demonstrates implementation of <b>responsive, state-based combat mechanics</b> and core <b>User Interface (UI)</b> systems using the <b>Unreal Engine</b>.
                 </p>
             </div>
         </header>
 
         <main class="w-full max-w-5xl">
-            <section>
-                <div class="project-card p-8 mb-12 flex flex-col items-center">
+            
+            <div class="flex justify-center gap-4 mb-8">
+                <button id="mechanics-toggle-btn" class="btn-toggle active" onclick="toggleSection('combat-mechanics-section')">
+                    I. Combat Mechanics
+                </button>
+                <button id="ui-toggle-btn" class="btn-toggle" onclick="toggleSection('ui-section')">
+                    II. User Interface (UI)
+                </button>
+            </div>
+            
+            <section id="combat-mechanics-section" class="mb-12" style="display: block;">
+                <div class="project-card p-8 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-6 w-full text-center">I. Combat Mechanics</h2>
+                    
                     <div class="w-full mb-6">
                         <div class="carousel-wrapper">
-                            <h4 id="video-label" class="video-label"></h4>
-
-                            <div class="carousel-container" data-carousel-id="davids-mighty-men">
-                                
-                                <div class="carousel-slide" data-label="Main Menu">
-                                    <video src="David/Main Menu.mp4" autoplay loop muted playsinline></video>
+                            <h4 id="mechanics-video-label" class="video-label"></h4>
+                            <div class="carousel-container" data-carousel-id="mechanics">
+                                <div class="carousel-slide" data-label="Shield">
+                                    <video src="David/Shield.mp4" autoplay loop muted playsinline></video>
                                 </div>
-                                <div class="carousel-slide" data-label="Video Settings">
-                                    <video src="David/Video Settings.mp4" autoplay loop muted playsinline></video>
+                                <div class="carousel-slide" data-label="Strafe">
+                                    <video src="David/Strafe.mp4" autoplay loop muted playsinline></video>
                                 </div>
-                                <div class="carousel-slide" data-label="Audio Settings">
-                                    <video src="David/Audio Settings.mp4" autoplay loop muted playsinline></video>
+                                <div class="carousel-slide" data-label="Dodge">
+                                    <video src="David/Dodge.mp4" autoplay loop muted playsinline></video>
                                 </div>
-
-                                <div class="carousel-slide" data-label="Combining Quick and Strong Attack Combos">
-                                    <video src="David/Combining Quick and Strong Attack Combos.mp4" autoplay loop muted playsinline></video>
+                                <div class="carousel-slide" data-label="Lock On">
+                                    <video src="David/Lock On.mp4" autoplay loop muted playsinline></video>
                                 </div>
                                 <div class="carousel-slide" data-label="Quick Attack Combo">
                                     <video src="David/Quick Attack Combo.mp4" autoplay loop muted playsinline></video>
@@ -264,14 +276,8 @@
                                 <div class="carousel-slide" data-label="Strong Attack Combo Delay">
                                     <video src="David/Strong Attack Combo Delay.mp4" autoplay loop muted playsinline></video>
                                 </div>
-                                <div class="carousel-slide" data-label="Dodge">
-                                    <video src="David/Dodge.mp4" autoplay loop muted playsinline></video>
-                                </div>
-                                <div class="carousel-slide" data-label="Shield">
-                                    <video src="David/Shield.mp4" autoplay loop muted playsinline></video>
-                                </div>
-                                <div class="carousel-slide" data-label="Lock On">
-                                    <video src="David/Lock On.mp4" autoplay loop muted playsinline></video>
+                                <div class="carousel-slide" data-label="Combining Quick and Strong Attack Combos">
+                                    <video src="David/Combining Quick and Strong Attack Combos.mp4" autoplay loop muted playsinline></video>
                                 </div>
                                 
                                 <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
@@ -282,21 +288,64 @@
                     </div>
 
                     <div class="w-full">
-                        <h3 class="text-3xl font-bold text-gray-900 mb-3">Project Overview: Combat System & UI</h3>
-                        <p class="text-gray-700 mb-4 leading-relaxed">
-                            This demonstration showcases a comprehensive, third-person action combat system and foundational <b>game menus</b> developed using the <b>Unreal Engine</b>. The project highlights the integration of responsive, fluid combat mechanics—including combo attacks, input delay management, dodging, and shielding—alongside user-friendly menu navigation for settings management.
-                        </p>
-                        <p class="text-gray-800 font-semibold mb-2">Skills Demonstrated:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-                            <li><b><span class="font-semibold">Game Engine Proficiency:</span></b> Deep knowledge of the Unreal Engine and its Blueprints visual scripting language for gameplay programming.</li>
-                            <li><b><span class="font-semibold">User Interface Design:</span></b> Creation and implementation of functional <b>Main Menu, Audio Settings, and Video Settings</b> screens.</li>
-                            <li><b><span class="font-semibold">State Machine Implementation:</span></b> Designed and implemented a robust <b>character state machine</b> to manage animations, player input, and combat transitions.</li>
-                            <li><b><span class="font-semibold">Input and Combat Management:</span></b> Handled complex player inputs for attack combos, timing windows, and defensive mechanics like dodging and shielding.</li>
-                            <li><b><span class="font-semibold">Version Control:</span></b> Utilized <b>Git/GitHub</b> for project management, collaboration, and asset tracking.</li>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Mechanics Implemented:</h3>
+                        <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+                            <li><b>Character State Machine:</b> Manages transitions between movement, attacking, and defense.</li>
+                            <li><b>Quick Attack Combo:</b> Chain of light attacks.</li>
+                            <li><b>Strong Attack Combo:</b> Chain of heavy attacks.</li>
+                            <li><b>Attack Combo Linking:</b> Ability to mix quick and strong attacks in a single combo.</li>
+                            <li><b>Input Buffer:</b> Manages player input timing for responsive combo execution.</li>
+                            <li><b>Combo Cooldown/Delay:</b> Enforces a delay after a full combo to prevent spamming.</li>
+                            <li><b>Dodge:</b> Defensive move with invulnerability frames (i-frames).</li>
+                            <li><b>Shield/Block:</b> Defensive stance that mitigates damage.</li>
+                            <li><b>Camera Lock-On:</b> System to maintain camera focus on an enemy target.</li>
                         </ul>
-                        <div class="flex flex-wrap gap-3">
+                        <div class="flex flex-wrap gap-3 mt-6">
                             <a href="https://www.youtube.com/watch?v=aZjMs_97ZG4" target="_blank" class="btn-primary">
-                                View Presentation Video
+                                View Full Presentation Video
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="ui-section" class="mb-12" style="display: none;">
+                <div class="project-card p-8 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-6 w-full text-center">II. User Interface (UI) Development</h2>
+                    
+                    <div class="w-full mb-6">
+                        <div class="carousel-wrapper">
+                            <h4 id="ui-video-label" class="video-label"></h4>
+                            <div class="carousel-container" data-carousel-id="ui">
+                                <div class="carousel-slide" data-label="Main Menu">
+                                    <video src="David/Main Menu.mp4" autoplay loop muted playsinline></video>
+                                </div>
+                                <div class="carousel-slide" data-label="Video Settings">
+                                    <video src="David/Video Settings.mp4" autoplay loop muted playsinline></video>
+                                </div>
+                                <div class="carousel-slide" data-label="Audio Settings">
+                                    <video src="David/Audio Settings.mp4" autoplay loop muted playsinline></video>
+                                </div>
+
+                                <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
+                                <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
+                                <div class="carousel-dots"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">User Interface Elements Implemented (UMG):</h3>
+                        <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+                            <li><b>Modular Menu Architecture:</b> All screens built as reusable <b>UMG widgets</b>.</li>
+                            <li><b>Main Menu:</b> Includes <b>Start Game, Continue, Settings, Credits, and Quit</b> buttons.</li>
+                            <li><b>Video Settings Screen:</b> Functional controls for <b>Screen Resolution</b> and <b>Graphics Quality Presets</b>.</li>
+                            <li><b>Audio Settings Screen:</b> Functional <b>sliders</b> for controlling <b>Master Volume, Music Volume, and SFX Volume</b>.</li>
+                            <li><b>Input Agnostic Navigation:</b> Full functionality with both <b>mouse and gamepad</b> input.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-3 mt-6">
+                            <a href="https://www.youtube.com/watch?v=aZjMs_97ZG4" target="_blank" class="btn-primary">
+                                View Full Presentation Video
                             </a>
                         </div>
                     </div>
@@ -311,78 +360,131 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const carousel = document.querySelector('.carousel-container');
+        // --- Section Toggling Logic ---
+        function toggleSection(sectionId) {
+            const mechanicsSection = document.getElementById('combat-mechanics-section');
+            const uiSection = document.getElementById('ui-section');
+            const mechanicsBtn = document.getElementById('mechanics-toggle-btn');
+            const uiBtn = document.getElementById('ui-toggle-btn');
 
-            if (carousel) {
-                const slides = carousel.querySelectorAll('.carousel-slide');
-                const prevBtn = carousel.querySelector('.carousel-nav-btn.prev');
-                const nextBtn = carousel.querySelector('.carousel-nav-btn.next');
-                const dotsContainer = carousel.querySelector('.carousel-dots');
-                const videoLabel = document.getElementById('video-label'); // Get the label element
-                let currentSlideIndex = 0;
-
-                slides.forEach((_, index) => {
-                    const dot = document.createElement('span');
-                    dot.classList.add('carousel-dot');
-                    if (index === 0) {
-                        dot.classList.add('active');
-                    }
-                    dot.addEventListener('click', () => showSlide(index));
-                    dotsContainer.appendChild(dot);
-                });
-
-                const dots = dotsContainer.querySelectorAll('.carousel-dot');
-
-                function showSlide(index) {
-                    slides.forEach(slide => {
-                        const video = slide.querySelector('video');
-                        if (video) {
-                            video.pause();
-                            video.currentTime = 0; 
-                        }
-                        slide.classList.remove('active');
-                    });
-                    dots.forEach(dot => dot.classList.remove('active'));
-
-                    // Set the active slide and dot
-                    const activeSlide = slides[index];
-                    activeSlide.classList.add('active');
-                    dots[index].classList.add('active');
-
-                    // Update the label text from the data-label attribute
-                    videoLabel.textContent = activeSlide.getAttribute('data-label');
-
-                    const activeVideo = activeSlide.querySelector('video');
-                    if (activeVideo) {
-                        activeVideo.play();
-                    }
-
-                    currentSlideIndex = index;
-                }
-
-                function nextSlide() {
-                    let newIndex = currentSlideIndex + 1;
-                    if (newIndex >= slides.length) {
-                        newIndex = 0;
-                    }
-                    showSlide(newIndex);
-                }
-
-                function prevSlide() {
-                    let newIndex = currentSlideIndex - 1;
-                    if (newIndex < 0) {
-                        newIndex = slides.length - 1;
-                    }
-                    showSlide(newIndex);
-                }
-
-                prevBtn.addEventListener('click', prevSlide);
-                nextBtn.addEventListener('click', nextSlide);
-
-                // Initialize the carousel
-                showSlide(currentSlideIndex);
+            // Hide all and remove active class from buttons
+            mechanicsSection.style.display = 'none';
+            uiSection.style.display = 'none';
+            mechanicsBtn.classList.remove('active');
+            uiBtn.classList.remove('active');
+            
+            // Show the selected section and set the corresponding button as active
+            if (sectionId === 'combat-mechanics-section') {
+                mechanicsSection.style.display = 'block';
+                mechanicsBtn.classList.add('active');
+            } else if (sectionId === 'ui-section') {
+                uiSection.style.display = 'block';
+                uiBtn.classList.add('active');
             }
+            
+            // Re-initialize the active carousel slide for the *newly visible* section
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                const carousel = activeSection.querySelector('.carousel-container');
+                if (carousel) {
+                    initializeCarousel(carousel);
+                }
+            }
+        }
+
+
+        // --- Carousel Logic (Refactored to support multiple carousels) ---
+        function initializeCarousel(carousel) {
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const prevBtn = carousel.querySelector('.carousel-nav-btn.prev');
+            const nextBtn = carousel.querySelector('.carousel-nav-btn.next');
+            const dotsContainer = carousel.querySelector('.carousel-dots');
+            
+            // Clear existing dots to prevent duplication
+            dotsContainer.innerHTML = ''; 
+
+            const carouselId = carousel.getAttribute('data-carousel-id');
+            const videoLabel = document.getElementById(`${carouselId}-video-label`);
+            let currentSlideIndex = 0;
+
+            slides.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('carousel-dot');
+                if (index === 0) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => showSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+            function showSlide(index) {
+                // Pause all videos and hide all slides in this carousel
+                slides.forEach(slide => {
+                    const video = slide.querySelector('video');
+                    if (video) {
+                        video.pause();
+                        video.currentTime = 0; 
+                    }
+                    slide.classList.remove('active');
+                });
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Set the active slide and dot
+                const activeSlide = slides[index];
+                activeSlide.classList.add('active');
+                dots[index].classList.add('active');
+
+                // Update the label text
+                if (videoLabel) {
+                    videoLabel.textContent = activeSlide.getAttribute('data-label');
+                }
+
+                const activeVideo = activeSlide.querySelector('video');
+                if (activeVideo) {
+                    activeVideo.play();
+                }
+
+                currentSlideIndex = index;
+            }
+
+            function nextSlide() {
+                let newIndex = currentSlideIndex + 1;
+                if (newIndex >= slides.length) {
+                    newIndex = 0;
+                }
+                showSlide(newIndex);
+            }
+
+            function prevSlide() {
+                let newIndex = currentSlideIndex - 1;
+                if (newIndex < 0) {
+                    newIndex = slides.length - 1;
+                }
+                showSlide(newIndex);
+            }
+
+            // Remove old listeners before adding new ones (essential for re-initialization)
+            const newPrevBtn = prevBtn.cloneNode(true);
+            prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+            newPrevBtn.addEventListener('click', prevSlide);
+
+            const newNextBtn = nextBtn.cloneNode(true);
+            nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+            newNextBtn.addEventListener('click', nextSlide);
+
+            // Show the first slide
+            showSlide(0);
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Find and initialize all carousels on the page when the DOM loads
+            const carousels = document.querySelectorAll('.carousel-container');
+            carousels.forEach(initializeCarousel);
+
+            // Ensure only the default section is visible initially
+            toggleSection('combat-mechanics-section');
         });
     </script>
 </body>
