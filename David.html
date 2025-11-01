@@ -3,25 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrew Parmelee - David's Mighty Men Project</title>
+    <title>Alexander Lynn - David's Mighty Men Project</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="icon.png">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-image: url('Portfolio.png');
+            background-image: url('Portfolio.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
             color: #374151;
+            /* Ensure the body itself is set up for scrolling if content overflows */
+            overflow-y: scroll;
         }
 
         /* Project Card specific styles */
         .project-card {
             background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 1.25rem;
+            border-radius: 1.20rem;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
@@ -30,9 +32,9 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        /* Button specific styles */
+        /* Button specific styles (Keeping styles for the view link) */
         .btn-primary {
-            background: linear-gradient(to right, #6366f1, #8b5cf6);
+            background: linear-gradient(to right, #4649ff, #3352ff);
             border: none;
             color: white;
             font-weight: 600;
@@ -42,28 +44,9 @@
             transition: all 0.3s ease-in-out;
         }
         .btn-primary:hover {
-            background: linear-gradient(to right, #4f46e5, #7c3aed);
+            background: linear-gradient(to right, #4649ff, #3352ff);
             transform: translateY(-2px);
             box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 6px -2px rgba(0, 0, 0, 0.08);
-        }
-
-        .btn-toggle {
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.75rem;
-            transition: all 0.3s ease-in-out;
-        }
-        .btn-toggle.active {
-            background: linear-gradient(to right, #6366f1, #8b5cf6);
-            color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        .btn-toggle:not(.active) {
-            background-color: #e5e7eb; /* Gray-200 */
-            color: #4b5563; /* Gray-600 */
-        }
-        .btn-toggle:not(.active):hover {
-            background-color: #d1d5db; /* Gray-300 */
         }
 
         /* Header animation */
@@ -193,6 +176,7 @@
         .navbar-link {
             color: #4a5568;
             font-weight: 600;
+            font-size: 1.35rem;
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             transition: all 0.2s ease-in-out;
@@ -200,16 +184,43 @@
         .navbar-link:hover {
             background-color: #e2e8f0;
             color: #2d3748;
+            font-size: 1.35rem;
         }
         .navbar-link.active {
-            background: linear-gradient(to right, #6366f1, #8b5cf6);
+            background: linear-gradient(to right, #4649ff, #3352ff);
             color: white;
+            font-size: 1.35rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-table {
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            border-collapse: separate;
+            /* INCREASED ROW SPACING */
+            border-spacing: 0 1.5rem;
+        }
+        .info-table td {
+            /* INCREASED CELL PADDING */
+            padding: 1.5rem 0;
+        }
+        .info-label {
+            font-weight: 700;
+            color: #1f2937; /* Darker text for label */
+            width: 30%;
+            font-size: 1.3rem;
+        }
+        .info-value {
+            color: #374151;
+            font-weight: 500;
+            width: 70%;
+            font-size: 1.3rem;
         }
     </style>
 </head>
 <body class="antialiased">
-    <div class="min-h-screen flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8">
+    <div class="min-h-screen flex flex-col items-center py-32 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto">
 
         <nav class="navbar w-full py-4 px-6 flex justify-center">
             <div class="flex space-x-6">
@@ -219,101 +230,95 @@
             </div>
         </nav>
 
-        <header>
-            <div class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-20">
+        <header class="w-full flex flex-col items-center">
+            <div class="text-center mb-16 w-full max-w-4xl animate-fade-in-down mt-40">
                 <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-4 leading-tight tracking-tight">
                     David's Mighty Men
                 </h1>
-                <p class="text-xl sm:text-2xl text-indigo-700 font-bold drop-shadow-sm">
-                    A Unreal Engine Combat Mechanics and UI Demonstration
-                </p>
-                <p class="mt-4 text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto">
-                    This project demonstrates implementation of <b>responsive, state-based combat mechanics</b> and core <b>User Interface (UI)</b> systems using the <b>Unreal Engine</b>.
+            </div>
+
+            <div class="w-full mb-32"> 
+                <img src="Thumbnails/David.png" alt="Thumbnail for David's Mighty Men" class="w-full h-auto rounded-xl shadow-lg">
+            </div>
+            
+            <div class="w-full max-w-2xl mx-auto mb-40 project-card p-10">
+                <table class="info-table">
+                    <tr>
+                        <td class="info-label">Role:</td>
+                        <td class="info-value">Creative Director, UI Designer, Programmer</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Duration:</td>
+                        <td class="info-value">September 2025 – May 2026 (WIP)</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Genre:</td>
+                        <td class="info-value">3D Hack N’ Slash Historical</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Engine:</td>
+                        <td class="info-value">Unreal Engine</td>
+                    </tr>
+                </table>
+
+                <p class="text-xl text-gray-700 leading-relaxed mx-auto text-left">
+                    David’s Mighty Men is a 3D Hack N’ Slash Historical game set 3,000 years
+ago in the times of King David’s reign. Currently I lead a team of six people working on
+the project, and it will be released in Spring 2026. I worked on project management, UI
+design, and gameplay programming.
                 </p>
             </div>
+
         </header>
 
         <main class="w-full max-w-5xl">
             
-            <div class="flex justify-center gap-4 mb-8">
-                <button id="mechanics-toggle-btn" class="btn-toggle active" onclick="toggleSection('combat-mechanics-section')">
-                    I. Combat Mechanics
-                </button>
-                <button id="ui-toggle-btn" class="btn-toggle" onclick="toggleSection('ui-section')">
-                    II. User Interface (UI)
-                </button>
-            </div>
-            
-            <section id="combat-mechanics-section" class="mb-12" style="display: block;">
-                <div class="project-card p-8 flex flex-col items-center">
-                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-6 w-full text-center">I. Combat Mechanics</h2>
+            <section id="project-management-section" class="mb-40" style="display: block;">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-16 w-full text-center">Project Management</h2>
                     
-                    <div class="w-full mb-6">
-                        <div class="carousel-wrapper">
-                            <h4 id="mechanics-video-label" class="video-label"></h4>
-                            <div class="carousel-container" data-carousel-id="mechanics">
-                                <div class="carousel-slide" data-label="Shield">
-                                    <video src="David/Shield.mp4" autoplay loop playsinline controls></video>
-                                </div>
-                                <div class="carousel-slide" data-label="Strafe">
-                                    <video src="David/Strafe.mp4" autoplay loop playsinline controls></video>
-                                </div>
-                                <div class="carousel-slide" data-label="Dodge">
-                                    <video src="David/Dodge.mp4" autoplay loop playsinline controls></video>
-                                </div>
-                                <div class="carousel-slide" data-label="Lock On">
-                                    <video src="David/Lock On.mp4" autoplay loop playsinline controls></video>
-                                </div>
-                                <div class="carousel-slide" data-label="Quick Attack Combo">
-                                    <video src="David/Quick Attack Combo.mp4" autoplay loop playsinline controls></video>
-                                </div>
-                                <div class="carousel-slide" data-label="Strong Attack Combo">
-                                    <video src="David/Strong Attack Combo.mp4" autoplay loop playsinline controls></video>
-                                </div>
-                                <div class="carousel-slide" data-label="Quick Attack Combo Delay">
-                                    <video src="David/Quick Attack Combo Delay.mp4" autoplay loop playsinline controls></video>
-                                </div>
-                                <div class="carousel-slide" data-label="Strong Attack Combo Delay">
-                                    <video src="David/Strong Attack Combo Delay.mp4" autoplay loop playsinline controls></video>
-                                </div>
-                                <div class="carousel-slide" data-label="Combining Quick and Strong Attack Combos">
-                                    <video src="David/Combining Quick and Strong Attack Combos.mp4" autoplay loop playsinline controls></video>
-                                </div>
-                                
-                                <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
-                                <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
-                                <div class="carousel-dots"></div>
-                            </div>
-                        </div>
+                    <div class="w-full mb-16">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                            As Creative Director, I lead a team of six, directing the overall vision for the game while managing each department in terms of their quality. I oversee all aspects of the game’s development, including level design, gameplay mechanics, and artistic direction. I am in constant talks with the producer and leads, making sure the project vision is still in scope so that each department has a clear picture of their tasks for the week. While the producer makes sure that the team can accomplish goals in a specific amount of time, I make sure that all creative goals are met, having the final say on the result of what’s being made, including art, assets, mechanics, story, and more. I am also heavily involved in designing the documentation, including the GDD, ASG, Gantt charts, team contracts and more. Additionally, I am responsible for conducting playtesting sessions as development goes on, making playtesting reports and hearing feedback from testers and iterating that feedback into production. Here are some of my contributions as Creative Director.
+                        </p>
+                        
                     </div>
 
                     <div class="w-full">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Mechanics Implemented:</h3>
-                        <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-                            <li><b>Character State Machine:</b> Manages transitions between movement, attacking, and defense.</li>
-                            <li><b>Quick Attack Combo:</b> Chain of light attacks.</li>
-                            <li><b>Strong Attack Combo:</b> Chain of heavy attacks.</li>
-                            <li><b>Attack Combo Linking:</b> Ability to mix quick and strong attacks in a single combo.</li>
-                            <li><b>Input Buffer:</b> Manages player input timing for responsive combo execution.</li>
-                            <li><b>Combo Cooldown/Delay:</b> Enforces a delay after a full combo to prevent spamming.</li>
-                            <li><b>Dodge:</b> Defensive move with invulnerability frames (i-frames).</li>
-                            <li><b>Shield/Block:</b> Defensive stance that mitigates damage.</li>
-                            <li><b>Camera Lock-On:</b> System to maintain camera focus on an enemy target.</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-3 mt-6">
-                            <a href="https://www.youtube.com/watch?v=aZjMs_97ZG4" target="_blank" class="btn-primary">
-                                View Full Presentation Video
-                            </a>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-8">Documentation Examples</h3>
+                        <div class="flex flex-col md:flex-row gap-16 justify-center items-start">
+                            <div class="flex-1 text-center">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">GDD & ASG Excerpts</h4>
+                                <div class="p-8 bg-gray-100 rounded-lg border border-gray-200">
+                                    
+                                    <p class="text-sm text-gray-600 mt-4">Screenshots showing sections of the Game Design Document and Art Style Guide.</p>
+                                </div>
+                            </div>
+                            <div class="flex-1 text-center">
+                                <h4 class="text-xl font-semibold text-gray-800 mb-4">Playtesting Report Sample</h4>
+                                <div class="p-8 bg-gray-100 rounded-lg border border-gray-200">
+                                    
+                                    <p class="text-sm text-gray-600 mt-4">Example of a playtesting report used to log and prioritize feedback.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
             
-            <section id="ui-section" class="mb-12" style="display: none;">
-                <div class="project-card p-8 flex flex-col items-center">
-                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-6 w-full text-center">II. User Interface (UI) Development</h2>
+            <hr class="my-32 border-t-2 border-gray-300">
+            <section id="ui-section" class="mb-40" style="display: block;">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-16 w-full text-center">User Interface (UI) Design</h2>
                     
-                    <div class="w-full mb-6">
+                    <div class="w-full mb-16">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                        As UI Designer, I implemented all UI elements in game, ensuring seamless player interaction. This game challenged me more than any other in my journey with UI Design so far, and it ended up being very fun to make. Our game’s platform is set to release on Steam, intending both KBM controls as well as Controller support, which was one of the UI challenges I had to overcome in order for those goals to be met. Here are some of my contributions for UI Design.
+                
+                    </div>
+
+                    <div class="w-full mb-24">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Live UI Demonstration Videos</h3>
                         <div class="carousel-wrapper">
                             <h4 id="ui-video-label" class="video-label"></h4>
                             <div class="carousel-container" data-carousel-id="ui">
@@ -334,85 +339,228 @@
                         </div>
                     </div>
 
-                    <div class="w-full">
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">User Interface Elements Implemented (UMG):</h3>
-                        <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-                            <li><b>Modular Menu Architecture:</b> All screens built as reusable <b>UMG widgets</b>.</li>
-                            <li><b>Main Menu:</b> Includes <b>Start Game, Continue, Settings, Credits, and Quit</b> buttons.</li>
-                            <li><b>Video Settings Screen:</b> Functional controls for <b>Screen Resolution</b> and <b>Graphics Quality Presets</b>.</li>
-                            <li><b>Audio Settings Screen:</b> Functional <b>sliders</b> for controlling <b>Master Volume, Music Volume, and SFX Volume</b>.</li>
-                            <li><b>Input Agnostic Navigation:</b> Full functionality with both <b>mouse and gamepad</b> input.</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-3 mt-6">
-                            <a href="https://www.youtube.com/watch?v=aZjMs_97ZG4" target="_blank" class="btn-primary">
-                                View Full Presentation Video
-                            </a>
+                    <div class="w-full mt-32">
+                        
+                        <h3 class="text-2xl font-bold text-center mb-8">Main Menu Comparison</h3>
+                        <div class="mb-24 p-10 bg-gray-50 rounded-xl shadow-inner">
+                            <div class="flex flex-col md:flex-row gap-16 justify-center items-start">
+                                <div class="flex-1 text-center">
+                                    <img src="David/Main Menu ver 1.png" alt="Main Menu Version 1" class="project-thumbnail" style="width: 100%; max-width: 800px;">
+                                </div>
+                                <div class="flex-1 text-center">
+                                    <img src="David/Main Menu ver 2.png" alt="Main Menu Version 2" class="project-thumbnail" style="width: 100%; max-width: 800px;">
+                                </div>
+                            </div>
                         </div>
+
+                        <h3 class="text-2xl font-bold text-center mb-8">Audio Settings Comparison</h3>
+                        <div class="mb-24 p-10 bg-gray-50 rounded-xl shadow-inner">
+                            <div class="flex flex-col md:flex-row gap-16 justify-center items-start">
+                                <div class="flex-1 text-center">
+                                    <img src="David/Audio Settings ver 1.png" alt="Audio Settings Version 1" class="project-thumbnail" style="width: 100%; max-width: 800px;">
+                                </div>
+                                <div class="flex-1 text-center">
+                                    <img src="David/Audio Settings ver 2.png" alt="Audio Settings Version 2" class="project-thumbnail" style="width: 100%; max-width: 800px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-center mb-8">Video Settings Comparison</h3>
+                        <div class="mb-24 p-10 bg-gray-50 rounded-xl shadow-inner">
+                            <div class="flex flex-col md:flex-row gap-16 justify-center items-start">
+                                <div class="flex-1 text-center">
+                                    <img src="David/Video Settings ver 1.png" alt="Video Settings Version 1" class="project-thumbnail" style="width: 100%; max-width: 800px;">
+                                </div>
+                                <div class="flex-1 text-center">
+                                    <img src="David/Video Settings ver 2.png" alt="Video Settings Version 2" class="project-thumbnail" style="width: 100%; max-width: 800px;">
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="text-lg text-gray-700 leading-relaxed mb-4">Here are some screenshots of how the UI first looked compared to now. At first, my process was focusing mainly on functionality first and applying better visual flair once I got that down. In the first image, buttons look plain and simple, with basic states and default Unreal text font. The sliders are also way smaller and overall layout looks less appealing. In the second picture, the button art and game font is now implemented, already making the UI look better. Additionally, I cleaned up the layout and formatting for more ease of navigation, as well as adjusting states for the settings options and sliders which coincides with our overall look for the game and how we want it to feel. I also added extra sections with controls and combo lists for players to look at.</h3>
                     </div>
+                </div>
+            </section>
+
+            <hr class="my-32 border-t-2 border-gray-300">
+            <section id="programming-section" class="mb-40" style="display: block;">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-16 w-full text-center">Gameplay Programming</h2>
+                    
+                    <div class="w-full mb-16">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                            Before we were into production, we first had to come up with a Proof of Concept to properly articulate what our game is supposed to be. Our team was given no more than two weeks to make a prototype build of our game showcasing our intended mechanics, art, and design that will represent the foundation our game is built from. I programmed all player movement and mechanics in this prototype, providing the foundation for player engagement and learning more about programming at a very fast pace. Here are some of my contributions for Gameplay Programming.
+                        </p>
+                    </div>
+
+                    <div class="w-full mb-24">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Movement and Blocking</h3>
+                        <div class="carousel-wrapper">
+                            <h4 id="programming-video-label-1" class="video-label"></h4>
+                            <div class="carousel-container" data-carousel-id="mechanics-1">
+                                <div class="carousel-slide" data-label="Shield">
+                                    <video src="David/Shield.mp4" autoplay loop playsinline controls></video>
+                                </div>
+                                <div class="carousel-slide" data-label="Strafe">
+                                    <video src="David/Strafe.mp4" autoplay loop playsinline controls></video>
+                                </div>
+                                <div class="carousel-slide" data-label="Dodge">
+                                    <video src="David/Dodge.mp4" autoplay loop playsinline controls></video>
+                                </div>
+                    
+                                <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
+                                <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
+                                <div class="carousel-dots"></div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="w-full mt-16">
+                    
+                            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                                Our game features 3D Third Person movement and the ability to Shield, Strafe, and Dodge. Using animation blend trees, I had to quickly figure out how to blend all these movements together to create seamless player movement. One obstacle I encountered was the Strafe. At first the animation wouldn’t play and would just slide since you need to be shielding while strafing and the shielding animation would override the strafing animation. So, I had to figure out a way to keep the top half of the shielding animation playing while the bottom half plays the strafing animation. After the Strafe was good, I moved onto Dodging, which involves a quick displacement of movement depending on the direction of the left control stick. I learned how to create a range function to play each dodge animation based on the determined range of inputs coming from the -/+ Y or X axis to ensure the player would dodge the correct way.
+                            </p>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Lock On</h3>
+                        <div class="carousel-wrapper">
+                            <h4 id="programming-video-label-1" class="video-label"></h4>
+                            <div class="carousel-container" data-carousel-id="mechanics-1">
+                                <div class="carousel-slide" data-label="Shield">
+                                    <video src="David/Lock On.mp4" autoplay loop playsinline controls></video>
+                                </div>
+                    
+                                <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
+                                <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
+                                <div class="carousel-dots"></div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="w-full mt-16">
+                    
+                            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                                Our game features a Lock On system that enables the player’s camera to orient towards an enemy when toggled. With the press of a button the player can engage Lock On if they are in range or disable it using the same button. They can also disable it when they move a certain distance away from the enemy. The Lock On mechanic uses a set of systems, including the first crucial function within the system, “finds closest target”, which works with the “find lock on target”, together they determine the proximity of a potential target. This coincides with the “Locked on Target” Boolean, which determines the target state and is initially set to false. If the system detects an enemy within the appropriate range, the camera rotation orients towards the enemy, and the “Locked on Target” Boolean sets to true. 
+                            </p>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Player Combat: Quick Attacks</h3>
+                        <div class="carousel-wrapper">
+                            <h4 id="programming-video-label-1" class="video-label"></h4>
+                            <div class="carousel-container" data-carousel-id="mechanics-1">
+                                <div class="carousel-slide" data-label="Quick Attack Combo">
+                                    <video src="David/Quick Attack Combo.mp4" autoplay loop playsinline controls></video>
+                                </div>
+                                <div class="carousel-slide" data-label="Quick Attack Combo Delay">
+                                    <video src="David/Quick Attack Combo Delay.mp4" autoplay loop playsinline controls></video>
+                                </div>
+                    
+                                <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
+                                <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
+                                <div class="carousel-dots"></div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="w-full mt-16">
+                    
+                            <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                                For our prototype, we had to showcase two functioning combos available in our game, which are the Quick Attack and Strong Attack Combos respectively. The intention is that players string together sequences of attacks, creating distinct combos, with each combo finishing with a powerful ground or aerial attack. Quick Attacks are short and fast swings dealing decent damage to opponents. My process for creating the Quick Attack was this: the player presses the Quick Attack input, and the system checks the combo count. The combo count determines dmg amount and animation type. Each sequential input is incremental, chaining the quick attacks. The player uses the quick attack four consecutive times to deal max quick attack dmg. The fourth hit in this combo will initialize the combo’s finisher, dealing an automatic final blow to end the combo. A 1.5 second timer is fired for each time the player presses the Quick Attack input, giving them a short window of time before their combo resets.
+                            <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Player Combat: Strong Attacks</h3>
+                            <div class="carousel-wrapper">
+                                <h4 id="programming-video-label-1" class="video-label"></h4>
+                                <div class="carousel-container" data-carousel-id="mechanics-1">
+                                    <div class="carousel-slide" data-label="Strong Attack Combo">
+                                        <video src="David/Strong Attack Combo.mp4" autoplay loop playsinline controls></video>
+                                    </div>
+                                    <div class="carousel-slide" data-label="Strong Attack Combo Delay">
+                                        <video src="David/Strong Attack Combo Delay.mp4" autoplay loop playsinline controls></video>
+                                    </div>
+                        
+                                    <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
+                                    <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
+                                    <div class="carousel-dots"></div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="w-full mt-16">
+                        
+                                <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                                    Compared to Quicks, Strong Attacks involve slower, heavier swings that use more of the player’s momentum but do a lot of damage. My process for creating the Strong Attacks was similar to Quicks, since they are both groups of four and have a finisher, I just needed to change the damage output and adjust the animation array to find the Strong Attack animations instead of the Quicks, along with a few other things. The 1.5 second timer also applies to these combos as well.
+
+
+                                </p>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Player Combat: Combining Quick and Strong Attacks</h3>
+                            <div class="carousel-wrapper">
+                                <h4 id="programming-video-label-1" class="video-label"></h4>
+                                <div class="carousel-container" data-carousel-id="mechanics-1">
+                                    <div class="carousel-slide" data-label="Combining Quick and Strong Attacks">
+                                        <video src="David/Combining Quick and Strong Attack Combos.mp4" autoplay loop playsinline controls></video>
+                                    </div>
+                        
+                                    <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
+                                    <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
+                                    <div class="carousel-dots"></div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="w-full mt-16">
+                        
+                                <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                                    In our game, I wanted the player to be able to switch between Quick and Strong Attacks mid-combo, giving more freedom of expression and allowing more options for the player to experiment with, creating fun and engaging combat. For the prototype, I was able to achieve this goal and many others within the 2 week time frame we were given.
+
+                                </p>
+                            </div>
+                        </div>
+                        
+                </div>
+            </section>
+            
+            <hr class="my-32 border-t-2 border-gray-300">
+            <section id="reflection-section" class="mb-40">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-16 w-full text-center">Reflection</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-center">
+                        This project so far has been the largest undertaking of anything I’ve been a part of in my game development career. Being the leader over a multi-semester project in my capstone class complete with a full production cycle has been the best learning experience I’ve had in university. It’s not only helped me become a more well-rounded game developer but has also strengthened my leadership skills and style significantly. It’s also helped me see just how much really goes into production of a studio led game.
+                    </p>
                 </div>
             </section>
         </main>
 
-        <footer class="mt-12 text-center text-gray-600 text-sm">
+        <footer class="mt-32 text-center text-gray-600 text-sm" style="color:rgba(0, 0, 0, 1)">
             <p>&copy; 2025 Alexander Lynn. All rights reserved.</p>
             <p>Project Leader, University of Central Florida</p>
         </footer>
     </div>
 
     <script>
-        // --- Section Toggling Logic ---
-        function toggleSection(sectionId) {
-            const mechanicsSection = document.getElementById('combat-mechanics-section');
-            const uiSection = document.getElementById('ui-section');
-            const mechanicsBtn = document.getElementById('mechanics-toggle-btn');
-            const uiBtn = document.getElementById('ui-toggle-btn');
-
-            // Hide all and remove active class from buttons
-            mechanicsSection.style.display = 'none';
-            uiSection.style.display = 'none';
-            mechanicsBtn.classList.remove('active');
-            uiBtn.classList.remove('active');
-            
-            // Show the selected section and set the corresponding button as active
-            if (sectionId === 'combat-mechanics-section') {
-                mechanicsSection.style.display = 'block';
-                mechanicsBtn.classList.add('active');
-            } else if (sectionId === 'ui-section') {
-                uiSection.style.display = 'block';
-                uiBtn.classList.add('active');
-            }
-            
-            // Re-initialize the active carousel slide for the *newly visible* section
-            const activeSection = document.getElementById(sectionId);
-            if (activeSection) {
-                const carousel = activeSection.querySelector('.carousel-container');
-                if (carousel) {
-                    initializeCarousel(carousel);
-                }
-            }
-        }
-
-
         // --- Carousel Logic (Refactored to support multiple carousels) ---
         function initializeCarousel(carousel) {
             const slides = carousel.querySelectorAll('.carousel-slide');
+            // Ensure slides is not empty before proceeding
+            if (slides.length === 0) return;
+            
             const prevBtn = carousel.querySelector('.carousel-nav-btn.prev');
             const nextBtn = carousel.querySelector('.carousel-nav-btn.next');
             const dotsContainer = carousel.querySelector('.carousel-dots');
             
-            // Clear existing dots to prevent duplication
             dotsContainer.innerHTML = ''; 
 
             const carouselId = carousel.getAttribute('data-carousel-id');
-            const videoLabel = document.getElementById(`${carouselId}-video-label`);
+            // Select the correct label element based on the ID
+            let videoLabel = null;
+            if (carouselId === 'ui') {
+                videoLabel = document.getElementById(`ui-video-label`);
+            } else if (carouselId === 'mechanics-1') {
+                videoLabel = document.getElementById(`programming-video-label-1`);
+            } else if (carouselId === 'mechanics-2') {
+                videoLabel = document.getElementById(`programming-video-label-2`);
+            }
+
             let currentSlideIndex = 0;
 
             slides.forEach((_, index) => {
                 const dot = document.createElement('span');
                 dot.classList.add('carousel-dot');
-                if (index === 0) {
-                    dot.classList.add('active');
-                }
                 dot.addEventListener('click', () => showSlide(index));
                 dotsContainer.appendChild(dot);
             });
@@ -424,6 +572,7 @@
                 slides.forEach(slide => {
                     const video = slide.querySelector('video');
                     if (video) {
+                        // Pause the video and reset time
                         video.pause();
                         video.currentTime = 0; 
                     }
@@ -441,8 +590,10 @@
                     videoLabel.textContent = activeSlide.getAttribute('data-label');
                 }
 
+                // Play the active video
                 const activeVideo = activeSlide.querySelector('video');
                 if (activeVideo) {
+                    // Start playback for the new active video
                     activeVideo.play();
                 }
 
@@ -465,26 +616,18 @@
                 showSlide(newIndex);
             }
 
-            // Remove old listeners before adding new ones (essential for re-initialization)
-            const newPrevBtn = prevBtn.cloneNode(true);
-            prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
-            newPrevBtn.addEventListener('click', prevSlide);
+            // Set up navigation button listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
 
-            const newNextBtn = nextBtn.cloneNode(true);
-            nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
-            newNextBtn.addEventListener('click', nextSlide);
-
-            // Show the first slide
+            // Show the first slide initially
             showSlide(0);
         }
         
         document.addEventListener('DOMContentLoaded', () => {
-            // Find and initialize all carousels on the page when the DOM loads
-            const carousels = document.querySelectorAll('.carousel-container');
-            carousels.forEach(initializeCarousel);
-
-            // Ensure only the default section is visible initially
-            toggleSection('combat-mechanics-section');
+            // Since all content is now visible, initialize all carousels on load
+            const allCarousels = document.querySelectorAll('.carousel-container');
+            allCarousels.forEach(initializeCarousel);
         });
     </script>
 </body>

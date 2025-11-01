@@ -8,9 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="icon.png">
     <style>
+        /* BASE STYLES */
         body {
             font-family: 'Inter', sans-serif;
-            background-image: url('Portfolio.png');
+            background-image: url('Portfolio.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -18,44 +19,61 @@
             color: #374151;
         }
 
-        /* Project Card specific styles */
+        /* PROJECT CARD STYLES */
         .project-card {
+            /* Kept width/centering for vertical stack */
+            max-width: 1000px; /* **ADJUSTED: Increased max-width for even bigger content** */
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            
             background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 1.25rem;
+            border-radius: 1.5rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             cursor: pointer;
-            /* IMPORTANT: Removed text-align: center from here, we will handle it with flexbox now */
-            overflow: hidden; /* Ensures image corners are rounded */
+            overflow: hidden; 
         }
         .project-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        .project-thumbnail {
-            width: 100%;
-            height: auto;
-            border-radius: 1.25rem 1.25rem 0 0; /* Only top corners rounded */
-            object-fit: cover;
-            transition: transform 0.4s ease-in-out;
+        /* NEW: Flexbox wrapper for Image + Text */
+        .card-content-wrapper {
+            display: flex;
+            align-items: flex-start; /* Aligns content to the top */
+            padding: 2rem; /* **ADJUSTED: Slightly more padding for the larger card** */
         }
 
+        .project-thumbnail {
+            /* **ADJUSTED: Sizing the thumbnail to be bigger** */
+            width: 45%; /* Thumbnail takes 45% of the wrapper width */
+            min-width: 300px; /* Ensure a minimum size on smaller screens */
+            height: auto;
+            border-radius: 1.25rem; /* Full radius on the image */
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+            margin-right: 2rem; /* **ADJUSTED: More space between image and text** */
+        }
+        
         .project-card:hover .project-thumbnail {
-            transform: scale(1.03); /* Subtle hover effect on image */
+            transform: scale(1.03);
+        }
+
+        .text-content {
+            width: 55%; /* **ADJUSTED: Text takes remaining 55%** */
         }
 
         .project-title {
-            padding: 1rem 1rem 1.5rem; /* Padding bottom for space */
-            font-size: 1.5rem; /* text-2xl */
-            font-weight: 700; /* font-bold */
+            padding: 0 0 0.5rem 0;
+            font-size: 1.875rem;
+            font-weight: 800;
             color: #1a202c;
-            text-align: center; /* Re-applied text-align here for the title */
+            text-align: left;
         }
-
-        /* Removed previous custom centering CSS as we are using a flexbox wrapper now */
         
-        /* Header animation */
+        /* HEADER ANIMATION (unchanged) */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -70,7 +88,7 @@
             animation: fadeInDown 1s ease-out forwards;
         }
 
-        /* Navbar specific styles */
+        /* NAVBAR STYLES (unchanged) */
         .navbar {
             position: fixed; 
             top: 0;
@@ -83,19 +101,23 @@
             border-bottom-right-radius: 1.25rem;
         }
         .navbar-link {
-            color: #4a5568; 
+            color: #4a5568;
+            font-size: 1.35rem;
             font-weight: 600;
             padding: 0.5rem 1rem;
+            font-size: 1.35rem;
             border-radius: 0.5rem;
             transition: all 0.2s ease-in-out;
         }
         .navbar-link:hover {
-            background-color: #e2e8f0; 
+            background-color: #e2e8f0;
+            font-size: 1.35rem;
             color: #2d3748; 
         }
         .navbar-link.active {
-            background: linear-gradient(to right, #6366f1, #8b5cf6); 
+            background: linear-gradient(to right, #4649ff, #3352ff);
             color: white;
+            font-size: 1.35rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
@@ -112,56 +134,67 @@
         </nav>
 
         <header class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-20">
-            <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-4 leading-tight tracking-tight">
-                Alexander Lynn
-            </h1>
-            <p class="text-xl sm:text-2xl text-indigo-700 font-bold drop-shadow-sm">
-                Project Leader | University of Central Florida
-            </p>
-            <p class="mt-4 text-lg text-gray-700 leading-relaxed">
-                Welcome to my portfolio! Click any project thumbnail below to view the detailed development and contributions.
+            <h2 class="text-2xl sm:text-5xl font-extrabold text-gray-900 mb-4 leading-tight tracking-tight">
+                Alexander Lynn - Project Leader
+            </h2>
+            <p class="mt-8 text-lg text-gray-700 leading-relaxed font-semibold" style = "color:rgb(0, 0, 0); font-size: 20px;">
+                Specializing in UI Design, Gameplay Programming, and Project Management
             </p>
         </header>
 
         <main class="w-full max-w-7xl">
             <section>
-                <h2 class="text-4xl font-bold text-gray-800 mb-10 text-center">My Projects</h2>
+                <h2 class="text-4xl font-bold text-gray-800 mb-10 text-center" style="color:rgba(0, 0, 0, 1)">My Portfolio</h2>
                 
-                <div class="project-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div class="project-grid grid grid-cols-1 gap-12 max-w-7xl mx-auto">
                     
                     <a href="David.html" class="project-card group">
-                        <img src="Thumbnails/David.png" alt="Thumbnail for David's Mighty Men" class="project-thumbnail">
-                        <h3 class="project-title">David's Mighty Men</h3>
+                        <div class="card-content-wrapper">
+                            <img src="Thumbnails/David.png" alt="Thumbnail for David's Mighty Men" class="project-thumbnail">
+                            <div class="text-content">
+                                <h3 class="project-title">David's Mighty Men</h3>
+                                <h4 class="text-xl font-semibold text-gray-800 mb-2">Role: Creative Director, UI Designer, Programmer </h4>
+                                <p class="text-gray-700 text-lg">
+                                    David’s Mighty Men is a 3D Hack N’ Slash Historical game currently in progress. I
+                                    lead a team of seven and it is set to release in Spring 2026.
+                                </p>
+                            </div>
+                        </div>
                     </a>
 
                     <a href="Feet.html" class="project-card group">
-                        <img src="Thumbnails/Feet.png" alt="Thumbnail for On Your Feet!" class="project-thumbnail">
-                        <h3 class="project-title">On Your Feet!</h3>
+                        <div class="card-content-wrapper">
+                            <img src="Thumbnails/Feet.png" alt="Thumbnail for On Your Feet!" class="project-thumbnail">
+                            <div class="text-content">
+                                <h3 class="project-title">On Your Feet!</h3>
+                                <h4 class="text-xl font-semibold text-gray-800 mb-2">Role: Creative Director, Level Designer </h4>
+                                <p class="text-gray-700 text-lg">
+                                    On Your Feet! is a 2D Platformer Beat Em’ Up game currently in progress. I am
+                                    the leader of the project and it is set to release in June 2026.
+                                </p>
+                            </div>
+                        </div>
                     </a>
 
                     <a href="Fishy.html" class="project-card group">
-                        <img src="Thumbnails/Fish.png" alt="Thumbnail for Fishy Business" class="project-thumbnail">
-                        <h3 class="project-title">Fishy Business</h3>
+                        <div class="card-content-wrapper">
+                            <img src="Thumbnails/Fish.png" alt="Thumbnail for Fishy Business" class="project-thumbnail">
+                            <div class="text-content">
+                                <h3 class="project-title">Fishy Business</h3>
+                                <h4 class="text-xl font-semibold text-gray-800 mb-2">Role: Producer, UI Designer </h4>
+                                <p class="text-gray-700 text-lg">
+                                    Business is a Tower Defense mobile game currently in progress. I am the
+                                    producer of a team of seven and it is set to release in December 2025.
+                                </p>
+                            </div>
+                        </div>
                     </a>
                     
-                    <div class="lg:col-span-3 flex justify-center space-x-8">
-                        
-                        <a href="Imagination.html" class="project-card group w-full max-w-[300px]">
-                            <img src="Thumbnails/Imagination.png" alt="Thumbnail for The Scale of Imagination" class="project-thumbnail">
-                            <h3 class="project-title">The Scale of Imagination</h3>
-                        </a>
-
-                        <a href="Prodigal.html" class="project-card group w-full max-w-[300px]">
-                            <img src="Thumbnails/Prodigal.png" alt="Thumbnail for Prodigal Lead Team Adventure" class="project-thumbnail">
-                            <h3 class="project-title">Prodigal Lead Team Adventure</h3>
-                        </a>
-                        
-                    </div>
-                    </div>
+                </div>
             </section>
         </main>
 
-        <footer class="mt-12 text-center text-gray-600 text-sm">
+        <footer class="mt-12 text-center text-gray-600 text-sm" style="color:rgba(0, 0, 0, 1)">
             <p>&copy; 2025 Alexander Lynn. All rights reserved.</p>
             <p>Project Leader, University of Central Florida</p>
         </footer>
