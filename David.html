@@ -16,11 +16,9 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
             color: #374151;
-            /* Ensure the body itself is set up for scrolling if content overflows */
             overflow-y: scroll;
         }
 
-        /* Project Card specific styles */
         .project-card {
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 1.20rem;
@@ -32,7 +30,6 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        /* Button specific styles (Keeping styles for the view link) */
         .btn-primary {
             background: linear-gradient(to right, #4649ff, #3352ff);
             border: none;
@@ -49,7 +46,6 @@
             box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 6px -2px rgba(0, 0, 0, 0.08);
         }
 
-        /* Header animation */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -64,29 +60,26 @@
             animation: fadeInDown 1s ease-out forwards;
         }
 
-        /* Carousel specific styles */
         .carousel-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 0.75rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
-        /* Added style for the video label */
         .video-label {
             text-align: center;
-            font-size: 1.25rem; /* text-xl */
-            font-weight: 700; /* font-bold */
-            color: #1a202c; /* dark text */
-            margin-bottom: 0.75rem; /* mb-3 */
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.75rem;
             padding: 0 1rem;
         }
         
         .carousel-wrapper {
-            /* This wraps the carousel-container to center the label above it */
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -99,19 +92,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            display: none; /* Hidden by default */
+            display: none;
             transition: opacity 0.5s ease-in-out;
-            background-color: #000; /* Fallback for media loading */
+            background-color: #000;
         }
         .carousel-slide.active {
-            display: block; /* Show active slide */
+            display: block;
             opacity: 1;
         }
         .carousel-slide img,
         .carousel-slide video {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Use 'contain' to ensure entire image/video is visible */
+            object-fit: contain;
             border-radius: 0.75rem;
         }
 
@@ -161,7 +154,6 @@
             transform: scale(1.2);
         }
 
-        /* Navbar specific styles (Retained for completeness) */
         .navbar {
             position: fixed;
             top: 0;
@@ -196,18 +188,16 @@
         .info-table {
             width: 100%;
             margin-top: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             border-collapse: separate;
-            /* INCREASED ROW SPACING */
-            border-spacing: 0 1.5rem;
+            border-spacing: 0 1rem;
         }
         .info-table td {
-            /* INCREASED CELL PADDING */
-            padding: 1.5rem 0;
+            padding: 1rem 0;
         }
         .info-label {
             font-weight: 700;
-            color: #1f2937; /* Darker text for label */
+            color: #1f2937;
             width: 30%;
             font-size: 1.3rem;
         }
@@ -220,7 +210,7 @@
     </style>
 </head>
 <body class="antialiased">
-    <div class="min-h-screen flex flex-col items-center py-32 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto">
+    <div class="min-h-screen flex flex-col items-center py-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto">
 
         <nav class="navbar w-full py-4 px-6 flex justify-center">
             <div class="flex space-x-6">
@@ -231,17 +221,17 @@
         </nav>
 
         <header class="w-full flex flex-col items-center">
-            <div class="text-center mb-16 w-full max-w-4xl animate-fade-in-down mt-40">
+            <div class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-32">
                 <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-4 leading-tight tracking-tight">
                     David's Mighty Men
                 </h1>
             </div>
 
-            <div class="w-full mb-32"> 
+            <div class="w-full mb-24">
                 <img src="Thumbnails/David.png" alt="Thumbnail for David's Mighty Men" class="w-full h-auto rounded-xl shadow-lg">
             </div>
             
-            <div class="w-full max-w-2xl mx-auto mb-40 project-card p-10">
+            <div class="w-full max-w-2xl mx-auto mb-32 project-card p-10">
                 <table class="info-table">
                     <tr>
                         <td class="info-label">Role:</td>
@@ -273,11 +263,11 @@ design, and gameplay programming.
 
         <main class="w-full max-w-5xl">
             
-            <section id="project-management-section" class="mb-40" style="display: block;">
+            <section id="project-management-section" class="mb-32" style="display: block;">
                 <div class="project-card p-12 flex flex-col items-center">
-                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-16 w-full text-center">Project Management</h2>
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Project Management</h2>
                     
-                    <div class="w-full mb-16">
+                    <div class="w-full mb-12">
                         <p class="text-lg text-gray-700 leading-relaxed mb-4">
                             As Creative Director, I lead a team of six, directing the overall vision for the game while managing each department in terms of their quality. I oversee all aspects of the game’s development, including level design, gameplay mechanics, and artistic direction. I am in constant talks with the producer and leads, making sure the project vision is still in scope so that each department has a clear picture of their tasks for the week. While the producer makes sure that the team can accomplish goals in a specific amount of time, I make sure that all creative goals are met, having the final say on the result of what’s being made, including art, assets, mechanics, story, and more. I am also heavily involved in designing the documentation, including the GDD, ASG, Gantt charts, team contracts and more. Additionally, I am responsible for conducting playtesting sessions as development goes on, making playtesting reports and hearing feedback from testers and iterating that feedback into production. Here are some of my contributions as Creative Director.
                         </p>
@@ -286,7 +276,7 @@ design, and gameplay programming.
 
                     <div class="w-full">
                         <h3 class="text-2xl font-bold text-gray-900 mb-8">Documentation Examples</h3>
-                        <div class="flex flex-col md:flex-row gap-16 justify-center items-start">
+                        <div class="flex flex-col md:flex-row gap-12 justify-center items-start">
                             <div class="flex-1 text-center">
                                 <h4 class="text-xl font-semibold text-gray-800 mb-4">GDD & ASG Excerpts</h4>
                                 <div class="p-8 bg-gray-100 rounded-lg border border-gray-200">
@@ -306,18 +296,18 @@ design, and gameplay programming.
                 </div>
             </section>
             
-            <hr class="my-32 border-t-2 border-gray-300">
-            <section id="ui-section" class="mb-40" style="display: block;">
+            <hr class="my-24 border-t-2 border-gray-300">
+            <section id="ui-section" class="mb-32" style="display: block;">
                 <div class="project-card p-12 flex flex-col items-center">
-                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-16 w-full text-center">User Interface (UI) Design</h2>
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">User Interface (UI) Design</h2>
                     
-                    <div class="w-full mb-16">
+                    <div class="w-full mb-12">
                         <p class="text-lg text-gray-700 leading-relaxed mb-4">
                         As UI Designer, I implemented all UI elements in game, ensuring seamless player interaction. This game challenged me more than any other in my journey with UI Design so far, and it ended up being very fun to make. Our game’s platform is set to release on Steam, intending both KBM controls as well as Controller support, which was one of the UI challenges I had to overcome in order for those goals to be met. Here are some of my contributions for UI Design.
                 
                     </div>
 
-                    <div class="w-full mb-24">
+                    <div class="w-full mb-16">
                         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Live UI Demonstration Videos</h3>
                         <div class="carousel-wrapper">
                             <h4 id="ui-video-label" class="video-label"></h4>
@@ -339,11 +329,11 @@ design, and gameplay programming.
                         </div>
                     </div>
 
-                    <div class="w-full mt-32">
+                    <div class="w-full mt-24">
                         
                         <h3 class="text-2xl font-bold text-center mb-8">Main Menu Comparison</h3>
-                        <div class="mb-24 p-10 bg-gray-50 rounded-xl shadow-inner">
-                            <div class="flex flex-col md:flex-row gap-16 justify-center items-start">
+                        <div class="mb-20 p-10 bg-gray-50 rounded-xl shadow-inner">
+                            <div class="flex flex-col md:flex-row gap-12 justify-center items-start">
                                 <div class="flex-1 text-center">
                                     <img src="David/Main Menu ver 1.png" alt="Main Menu Version 1" class="project-thumbnail" style="width: 100%; max-width: 800px;">
                                 </div>
@@ -354,8 +344,8 @@ design, and gameplay programming.
                         </div>
 
                         <h3 class="text-2xl font-bold text-center mb-8">Audio Settings Comparison</h3>
-                        <div class="mb-24 p-10 bg-gray-50 rounded-xl shadow-inner">
-                            <div class="flex flex-col md:flex-row gap-16 justify-center items-start">
+                        <div class="mb-20 p-10 bg-gray-50 rounded-xl shadow-inner">
+                            <div class="flex flex-col md:flex-row gap-12 justify-center items-start">
                                 <div class="flex-1 text-center">
                                     <img src="David/Audio Settings ver 1.png" alt="Audio Settings Version 1" class="project-thumbnail" style="width: 100%; max-width: 800px;">
                                 </div>
@@ -366,8 +356,8 @@ design, and gameplay programming.
                         </div>
 
                         <h3 class="text-2xl font-bold text-center mb-8">Video Settings Comparison</h3>
-                        <div class="mb-24 p-10 bg-gray-50 rounded-xl shadow-inner">
-                            <div class="flex flex-col md:flex-row gap-16 justify-center items-start">
+                        <div class="mb-20 p-10 bg-gray-50 rounded-xl shadow-inner">
+                            <div class="flex flex-col md:flex-row gap-12 justify-center items-start">
                                 <div class="flex-1 text-center">
                                     <img src="David/Video Settings ver 1.png" alt="Video Settings Version 1" class="project-thumbnail" style="width: 100%; max-width: 800px;">
                                 </div>
@@ -381,18 +371,18 @@ design, and gameplay programming.
                 </div>
             </section>
 
-            <hr class="my-32 border-t-2 border-gray-300">
-            <section id="programming-section" class="mb-40" style="display: block;">
+            <hr class="my-24 border-t-2 border-gray-300">
+            <section id="programming-section" class="mb-32" style="display: block;">
                 <div class="project-card p-12 flex flex-col items-center">
-                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-16 w-full text-center">Gameplay Programming</h2>
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Gameplay Programming</h2>
                     
-                    <div class="w-full mb-16">
+                    <div class="w-full mb-12">
                         <p class="text-lg text-gray-700 leading-relaxed mb-4">
                             Before we were into production, we first had to come up with a Proof of Concept to properly articulate what our game is supposed to be. Our team was given no more than two weeks to make a prototype build of our game showcasing our intended mechanics, art, and design that will represent the foundation our game is built from. I programmed all player movement and mechanics in this prototype, providing the foundation for player engagement and learning more about programming at a very fast pace. Here are some of my contributions for Gameplay Programming.
                         </p>
                     </div>
 
-                    <div class="w-full mb-24">
+                    <div class="w-full mb-16">
                         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Movement and Blocking</h3>
                         <div class="carousel-wrapper">
                             <h4 id="programming-video-label-1" class="video-label"></h4>
@@ -411,10 +401,9 @@ design, and gameplay programming.
                                 <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
                                 <div class="carousel-dots"></div>
                             </div>
-                            
                         </div>
 
-                        <div class="w-full mt-16">
+                        <div class="w-full mt-12">
                     
                             <p class="text-lg text-gray-700 leading-relaxed mb-4">
                                 Our game features 3D Third Person movement and the ability to Shield, Strafe, and Dodge. Using animation blend trees, I had to quickly figure out how to blend all these movements together to create seamless player movement. One obstacle I encountered was the Strafe. At first the animation wouldn’t play and would just slide since you need to be shielding while strafing and the shielding animation would override the strafing animation. So, I had to figure out a way to keep the top half of the shielding animation playing while the bottom half plays the strafing animation. After the Strafe was good, I moved onto Dodging, which involves a quick displacement of movement depending on the direction of the left control stick. I learned how to create a range function to play each dodge animation based on the determined range of inputs coming from the -/+ Y or X axis to ensure the player would dodge the correct way.
@@ -424,7 +413,7 @@ design, and gameplay programming.
                         <div class="carousel-wrapper">
                             <h4 id="programming-video-label-1" class="video-label"></h4>
                             <div class="carousel-container" data-carousel-id="mechanics-1">
-                                <div class="carousel-slide" data-label="Shield">
+                                <div class="carousel-slide" data-label="Lock On">
                                     <video src="David/Lock On.mp4" autoplay loop playsinline controls></video>
                                 </div>
                     
@@ -435,10 +424,10 @@ design, and gameplay programming.
                             
                         </div>
 
-                        <div class="w-full mt-16">
+                        <div class="w-full mt-12">
                     
                             <p class="text-lg text-gray-700 leading-relaxed mb-4">
-                                Our game features a Lock On system that enables the player’s camera to orient towards an enemy when toggled. With the press of a button the player can engage Lock On if they are in range or disable it using the same button. They can also disable it when they move a certain distance away from the enemy. The Lock On mechanic uses a set of systems, including the first crucial function within the system, “finds closest target”, which works with the “find lock on target”, together they determine the proximity of a potential target. This coincides with the “Locked on Target” Boolean, which determines the target state and is initially set to false. If the system detects an enemy within the appropriate range, the camera rotation orients towards the enemy, and the “Locked on Target” Boolean sets to true. 
+                                Our game features a Lock On system that enables the player’s camera to orient towards an enemy when toggled. With the press of a button the player can engage Lock On if they are in range or disable it using the same button. They can also disable it when they move a certain distance away from the enemy. The Lock On mechanic uses a set of systems, including the first crucial function within the system, “finds closest target”, which works with the “find lock on target”, together they determine the proximity of a potential target. This coincides with the “Locked on Target” Boolean, which determines the target state and is initially set to false. If the system detects an enemy within the appropriate range, the camera rotation orients towards the enemy, and the “Locked on Target” Boolean sets to true.
                             </p>
                         </div>
                         <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Player Combat: Quick Attacks</h3>
@@ -459,7 +448,7 @@ design, and gameplay programming.
                             
                         </div>
 
-                        <div class="w-full mt-16">
+                        <div class="w-full mt-12">
                     
                             <p class="text-lg text-gray-700 leading-relaxed mb-4">
                                 For our prototype, we had to showcase two functioning combos available in our game, which are the Quick Attack and Strong Attack Combos respectively. The intention is that players string together sequences of attacks, creating distinct combos, with each combo finishing with a powerful ground or aerial attack. Quick Attacks are short and fast swings dealing decent damage to opponents. My process for creating the Quick Attack was this: the player presses the Quick Attack input, and the system checks the combo count. The combo count determines dmg amount and animation type. Each sequential input is incremental, chaining the quick attacks. The player uses the quick attack four consecutive times to deal max quick attack dmg. The fourth hit in this combo will initialize the combo’s finisher, dealing an automatic final blow to end the combo. A 1.5 second timer is fired for each time the player presses the Quick Attack input, giving them a short window of time before their combo resets.
@@ -481,7 +470,7 @@ design, and gameplay programming.
                                 
                             </div>
 
-                            <div class="w-full mt-16">
+                            <div class="w-full mt-12">
                         
                                 <p class="text-lg text-gray-700 leading-relaxed mb-4">
                                     Compared to Quicks, Strong Attacks involve slower, heavier swings that use more of the player’s momentum but do a lot of damage. My process for creating the Strong Attacks was similar to Quicks, since they are both groups of four and have a finisher, I just needed to change the damage output and adjust the animation array to find the Strong Attack animations instead of the Quicks, along with a few other things. The 1.5 second timer also applies to these combos as well.
@@ -503,7 +492,7 @@ design, and gameplay programming.
                                 
                             </div>
 
-                            <div class="w-full mt-16">
+                            <div class="w-full mt-12">
                         
                                 <p class="text-lg text-gray-700 leading-relaxed mb-4">
                                     In our game, I wanted the player to be able to switch between Quick and Strong Attacks mid-combo, giving more freedom of expression and allowing more options for the player to experiment with, creating fun and engaging combat. For the prototype, I was able to achieve this goal and many others within the 2 week time frame we were given.
@@ -515,10 +504,10 @@ design, and gameplay programming.
                 </div>
             </section>
             
-            <hr class="my-32 border-t-2 border-gray-300">
-            <section id="reflection-section" class="mb-40">
+            <hr class="my-24 border-t-2 border-gray-300">
+            <section id="reflection-section" class="mb-24">
                 <div class="project-card p-12 flex flex-col items-center">
-                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-16 w-full text-center">Reflection</h2>
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Reflection</h2>
                     <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-center">
                         This project so far has been the largest undertaking of anything I’ve been a part of in my game development career. Being the leader over a multi-semester project in my capstone class complete with a full production cycle has been the best learning experience I’ve had in university. It’s not only helped me become a more well-rounded game developer but has also strengthened my leadership skills and style significantly. It’s also helped me see just how much really goes into production of a studio led game.
                     </p>
@@ -526,7 +515,7 @@ design, and gameplay programming.
             </section>
         </main>
 
-        <footer class="mt-32 text-center text-gray-600 text-sm" style="color:rgba(0, 0, 0, 1)">
+        <footer class="mt-24 text-center text-gray-600 text-sm" style="color:rgba(0, 0, 0, 1)">
             <p>&copy; 2025 Alexander Lynn. All rights reserved.</p>
             <p>Project Leader, University of Central Florida</p>
         </footer>
@@ -543,7 +532,7 @@ design, and gameplay programming.
             const nextBtn = carousel.querySelector('.carousel-nav-btn.next');
             const dotsContainer = carousel.querySelector('.carousel-dots');
             
-            dotsContainer.innerHTML = ''; 
+            dotsContainer.innerHTML = '';
 
             const carouselId = carousel.getAttribute('data-carousel-id');
             // Select the correct label element based on the ID
@@ -574,7 +563,7 @@ design, and gameplay programming.
                     if (video) {
                         // Pause the video and reset time
                         video.pause();
-                        video.currentTime = 0; 
+                        video.currentTime = 0;
                     }
                     slide.classList.remove('active');
                 });
