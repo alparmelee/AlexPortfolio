@@ -134,6 +134,7 @@
             background-color: #f3f4f6; /* Light background for consistency */
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio - fixed aspect for media */
             position: relative;
+            cursor: pointer; /* Add pointer cursor for clickability */
         }
         .media-item img,
         .media-item video {
@@ -144,7 +145,7 @@
             height: 100%;
             object-fit: contain; /* Keeps entire image/video visible */
             border-radius: 0.75rem;
-            background-color: #000; /* Black background for videos */
+            background-color: #000; /* Black background for videos and images in full screen */
         }
         .media-item p.label {
             position: absolute;
@@ -158,9 +159,60 @@
             font-weight: 600;
             z-index: 5;
         }
+
+        /* Styles for the fullscreen overlay/modal */
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 5000;
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-content {
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-content img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 100vh; /* Max height is viewport height */
+            object-fit: contain;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 5001;
+            padding: 10px;
+            line-height: 1;
+        }
     </style>
 </head>
 <body class="antialiased">
+
+    <div id="fullscreenOverlay" class="fullscreen-overlay" onclick="closeFullscreen()">
+        <span class="close-btn" onclick="closeFullscreen()">&times;</span>
+        <div id="fullscreenContent" class="fullscreen-content">
+            <img id="fullscreenImage" src="" alt="Full Screen Image">
+        </div>
+    </div>
+
     <div class="min-h-screen flex flex-col items-center py-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto">
 
         <nav class="navbar w-full py-4 px-6 flex justify-center">
@@ -179,7 +231,7 @@
             </div>
 
             <div class="w-full mb-24">
-                <img src="Thumbnails/Feet.png" alt="Thumbnail for On Your Feet!" class="w-full h-auto rounded-xl shadow-lg">
+                <img src="Thumbnails/Feet.png" alt="Thumbnail for On Your Feet!" class="w-full h-auto rounded-xl shadow-lg cursor-pointer" onclick="openFullscreen('Thumbnails/Feet.png')">
             </div>
             
             <div class="w-full max-w-2xl mx-auto mb-32 project-card p-10">
@@ -237,10 +289,10 @@
                     <div class="w-full max-w-4xl mx-auto mb-16"> <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 1: Portugal (Port 1-1)</h3>
                         <div class="level-comparison-container">
                             <div class="media-item">
-                                <img src="Feet/Port 1-1.png" alt="Port 1-1 Level Concept" loading="lazy">
+                                <img src="Feet/Port 1-1.png" alt="Port 1-1 Level Concept" loading="lazy" onclick="openFullscreen('Feet/Port 1-1.png')">
                                 <p class="label">Initial Concept Sketch</p>
                             </div>
-                            <div class="media-item">
+                            <div class="media-item" onclick="event.stopPropagation();">
                                 <video src="Feet/Port 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
                                 <p class="label">Completed Level Gameplay</p>
                             </div>
@@ -254,10 +306,10 @@
                         <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 2: Italy (Italy 1-1)</h3>
                         <div class="level-comparison-container">
                             <div class="media-item">
-                                <img src="Feet/Italy 1-1.png" alt="Italy 1-1 Level Concept" loading="lazy">
+                                <img src="Feet/Italy 1-1.png" alt="Italy 1-1 Level Concept" loading="lazy" onclick="openFullscreen('Feet/Italy 1-1.png')">
                                 <p class="label">Initial Concept Sketch</p>
                             </div>
-                            <div class="media-item">
+                            <div class="media-item" onclick="event.stopPropagation();">
                                 <video src="Feet/Italy 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
                                 <p class="label">Completed Level Gameplay</p>
                             </div>
@@ -271,16 +323,17 @@
                         <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 3: France (France 1-1)</h3>
                         <div class="level-comparison-container">
                             <div class="media-item">
-                                <img src="Feet/France 1-1.png" alt="France 1-1 Level Concept" loading="lazy">
+                                <img src="Feet/France 1-1.png" alt="France 1-1 Level Concept" loading="lazy" onclick="openFullscreen('Feet/France 1-1.png')">
                                 <p class="label">Initial Concept Sketch</p>
                             </div>
-                            <div class="media-item">
+                            <div class="media-item" onclick="event.stopPropagation();">
                                 <video src="Feet/France 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
                                 <p class="label">Completed Level Gameplay</p>
                             </div>
                         </div>
                         <p class="text-md text-gray-700 leading-relaxed text-center">
                             The player uses the Aim Kick to reach a button, then uses it again to hit a moving switch. They must avoid enemies, bounce the ball off the ceiling to hit a switch, and then jump on a series of breakable platforms to evade more enemies. The player jumps onto a moving platform and hits a switch with the correct timing. After that, they hit a different switch to rotate platforms that have spikes on the bottom. The level concludes with the player riding an auto-scrolling platform while dodging enemies and hitting switches, thereby reaching the goal.
+                        </p>
                     </div>
 
                 </div>
@@ -291,7 +344,7 @@
                 <div class="project-card p-12 flex flex-col items-center">
                     <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Reflection</h2>
                     <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-center">
-                        I am currently working on this game with my friend Andrew and it's been a blast so far!
+                        On Your Feet! has been a blast to work on so far! I've been coming up with concepts since around November 2024, and it's really awesome seeing the progress we've made since the start of development. This project has really helped me refine my creative mind and use the full extent of my imagination to flesh out all my ideas effectively. My 1 on 1 leadership skills has also improved a lot as me and Andrew continue to do great work together!
                     </p>
                 </div>
             </section>
@@ -302,5 +355,25 @@
             <p>Project Leader, University of Central Florida</p>
         </footer>
     </div>
+
+    <script>
+        function openFullscreen(imageSrc) {
+            document.getElementById('fullscreenImage').src = imageSrc;
+            document.getElementById('fullscreenOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when fullscreen
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenOverlay').style.display = 'none';
+            document.body.style.overflow = 'scroll'; // Re-enable scrolling
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                closeFullscreen();
+            }
+        });
+    </script>
 </body>
 </html>

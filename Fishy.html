@@ -130,6 +130,7 @@
             border-radius: 0.75rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             background-color: #fff;
+            cursor: pointer;
         }
         .ui-image-card img {
             width: 100%;
@@ -137,13 +138,67 @@
             border-radius: 0.5rem;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             object-fit: contain;
-            /* ADJUSTED: Set to 16/10 aspect ratio for wider images (16:9 is 16/9, 16:12 is 4/3 or 16/12) */
             aspect-ratio: 16/10; 
-            max-height: 400px; /* Reduced max height to compensate for width */
+            max-height: 400px;
+        }
+        
+        .main-thumbnail {
+            cursor: pointer;
+        }
+        
+        /* Fullscreen Overlay Styles */
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 5000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-content {
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-content img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 100vh;
+            object-fit: contain;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 5001;
+            padding: 10px;
+            line-height: 1;
         }
     </style>
 </head>
 <body class="antialiased">
+
+    <div id="fullscreenOverlay" class="fullscreen-overlay" onclick="closeFullscreen()">
+        <span class="close-btn" onclick="closeFullscreen()">&times;</span>
+        <div id="fullscreenContent" class="fullscreen-content">
+            <img id="fullscreenImage" src="" alt="Full Screen Image">
+        </div>
+    </div>
+
     <div class="min-h-screen flex flex-col items-center py-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto">
 
         <nav class="navbar w-full py-4 px-6 flex justify-center">
@@ -162,7 +217,7 @@
             </div>
 
             <div class="w-full mb-24 max-w-4xl">
-                <img src="Thumbnails/Fish.png" alt="Thumbnail for Fishy Business" class="w-full h-auto rounded-xl shadow-lg">
+                <img src="Thumbnails/Fish.png" alt="Thumbnail for Fishy Business" class="w-full h-auto rounded-xl shadow-lg main-thumbnail" onclick="openFullscreen('Thumbnails/Fish.png')">
             </div>
             
             <div class="w-full max-w-2xl mx-auto mb-32 project-card p-10">
@@ -202,6 +257,7 @@
                         <p class="text-lg text-gray-700 leading-relaxed mb-4">
                             As the Producer, I lead over a team of seven, scheduling meetings and delegating tasks on a weekly basis. Again, communication is very important here. Team collaboration is crucial to ensure that all standards are set from the get-go and deadlines are met successfully. As Producer, I was also heavily involved in handling the documentation for the game, including the GDD, ASG, team contracts, and more.
 
+                    </div>
                 </div>
             </section>
             
@@ -213,14 +269,14 @@
                     <div class="w-full mb-12 max-w-4xl">
 
                         <div class="ui-comparison-container">
-                            <div class="ui-image-card">
+                            <div class="ui-image-card" onclick="openFullscreen('Fishy/Main Menu.png')">
                                 <img src="Fishy/Main Menu.png" alt="Fishy Business Main Menu" loading="lazy">
                                 <h4 class="text-xl font-semibold text-gray-800 mt-4">Main Menu Design</h4>
                                 <p class="text-md text-gray-600 text-center">
                                     Designed for clear, immediate access to starting the game, quitting, shopping, and settings, with a visually appealing layout to engage users right away.
                                 </p>
                             </div>
-                            <div class="ui-image-card">
+                            <div class="ui-image-card" onclick="openFullscreen('Fishy/Pause Menu.png')">
                                 <img src="Fishy/Pause Menu.png" alt="Fishy Business Pause Menu" loading="lazy">
                                 <h4 class="text-xl font-semibold text-gray-800 mt-4">Pause Menu Design</h4>
                                 <p class="text-md text-gray-600 text-center">
@@ -238,6 +294,7 @@
                     <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Reflection</h2>
                     <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-center">
                         Throughout development of Fishy Business, I’d say I’ve learned a good amount so far. I’ve learned that making a mobile game in Unreal Engine is harder than it looks, the importance of team communication and meetings, how rewarding the results can be when properly sticking to schedules and deadlines, and overall aspects of the multiple responsibilities a producer needs to juggle during production. In terms of UI Design, I’ve learned to adjust my PC minded brain to fit for mobile users, changing my workflow in the process.
+                    </p>
             </section>
         </main>
 
@@ -246,5 +303,24 @@
             <p>Project Leader, University of Central Florida</p>
         </footer>
     </div>
+
+    <script>
+        function openFullscreen(imageSrc) {
+            document.getElementById('fullscreenImage').src = imageSrc;
+            document.getElementById('fullscreenOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenOverlay').style.display = 'none';
+            document.body.style.overflow = 'scroll'; 
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                closeFullscreen();
+            }
+        });
+    </script>
 </body>
 </html>
