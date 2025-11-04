@@ -16,12 +16,12 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
             color: #374151;
+            overflow-y: scroll;
         }
 
-        /* Project Card specific styles */
         .project-card {
             background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 1.25rem;
+            border-radius: 1.20rem;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
@@ -30,7 +30,6 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        /* Button specific styles */
         .btn-primary {
             background: linear-gradient(to right, #4649ff, #3352ff);
             border: none;
@@ -47,23 +46,6 @@
             box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 6px -2px rgba(0, 0, 0, 0.08);
         }
 
-        .btn-secondary {
-            background: linear-gradient(to right, #4b5563, #6b7280);
-            border: none;
-            color: white;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease-in-out;
-        }
-        .btn-secondary:hover {
-            background: linear-gradient(to right, #374151, #4b5563);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 6px -2px rgba(0, 0, 0, 0.08);
-        }
-
-        /* Header animation */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -78,100 +60,6 @@
             animation: fadeInDown 1s ease-out forwards;
         }
 
-        /* Carousel specific styles (Adjusted for images) */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            height: auto; 
-            max-height: 80vh; 
-            overflow: hidden;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Added style for the image label */
-        .image-label {
-            text-align: center;
-            font-size: 1.25rem; /* text-xl */
-            font-weight: 700; /* font-bold */
-            color: #1a202c; /* dark text */
-            margin-bottom: 0.75rem; /* mb-3 */
-            padding: 0 1rem;
-        }
-        
-        .carousel-wrapper {
-            /* This wraps the carousel-container to center the label above it */
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .carousel-slide {
-            width: 100%;
-            height: auto;
-            display: none; 
-            transition: opacity 0.5s ease-in-out;
-            background-color: #000; 
-        }
-        .carousel-slide.active {
-            display: block; 
-            opacity: 1;
-        }
-        .carousel-slide img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            border-radius: 0.75rem;
-        }
-        
-        .carousel-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 0.75rem 0.5rem;
-            cursor: pointer;
-            font-size: 1.5rem;
-            z-index: 10;
-            border-radius: 0.5rem;
-            transition: background-color 0.3s ease;
-        }
-        .carousel-nav-btn:hover {
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-        .carousel-nav-btn.prev {
-            left: 0.5rem;
-        }
-        .carousel-nav-btn.next {
-            right: 0.5rem;
-        }
-
-        .carousel-dots {
-            position: absolute;
-            bottom: 0.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-            z-index: 10;
-        }
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .carousel-dot.active {
-            background-color: white;
-            transform: scale(1.2);
-        }
-
-        /* Navbar specific styles (Retained for completeness) */
         .navbar {
             position: fixed;
             top: 0;
@@ -186,26 +74,94 @@
         .navbar-link {
             color: #4a5568;
             font-weight: 600;
-            padding: 0.5rem 1rem;
             font-size: 1.35rem;
+            padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             transition: all 0.2s ease-in-out;
         }
         .navbar-link:hover {
             background-color: #e2e8f0;
-            font-size: 1.35rem;
             color: #2d3748;
+            font-size: 1.35rem;
         }
         .navbar-link.active {
             background: linear-gradient(to right, #4649ff, #3352ff);
-            font-size: 1.35rem;
             color: white;
+            font-size: 1.35rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-table {
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border-collapse: separate;
+            border-spacing: 0 1rem;
+        }
+        .info-table td {
+            padding: 1rem 0;
+        }
+        .info-label {
+            font-weight: 700;
+            color: #1f2937;
+            width: 30%;
+            font-size: 1.3rem;
+        }
+        .info-value {
+            color: #374151;
+            font-weight: 500;
+            width: 70%;
+            font-size: 1.3rem;
+        }
+
+        /* Adjusted for larger comparison section */
+        .level-comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns for image and video */
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .media-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Ensures rounded corners */
+            background-color: #f3f4f6; /* Light background for consistency */
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio - fixed aspect for media */
+            position: relative;
+        }
+        .media-item img,
+        .media-item video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Keeps entire image/video visible */
+            border-radius: 0.75rem;
+            background-color: #000; /* Black background for videos */
+        }
+        .media-item p.label {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            z-index: 5;
         }
     </style>
 </head>
 <body class="antialiased">
-    <div class="min-h-screen flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8">
+    <div class="min-h-screen flex flex-col items-center py-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto">
 
         <nav class="navbar w-full py-4 px-6 flex justify-center">
             <div class="flex space-x-6">
@@ -215,153 +171,136 @@
             </div>
         </nav>
 
-        <header>
-            <div class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-20">
+        <header class="w-full flex flex-col items-center">
+            <div class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-32">
                 <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-4 leading-tight tracking-tight">
                     On Your Feet!
                 </h1>
-                <p class="text-xl sm:text-2xl text-indigo-700 font-bold drop-shadow-sm" style="color:rgba(0, 0, 0, 1)">
-                    2D Action-Adventure Platformer
-                </p>
-                <p class="mt-4 text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto" style="color:rgba(0, 0, 0, 1)">
-                    <b>On Your Feet!</b> is a 2D Action-Adventure platformer focused on the game of soccer. Aliens are invading the Earth, and you must use your soccer skills to fight for the world’s most popular game! I am currently collaborating with a friend, focusing on the game's core design and creative direction.
+            </div>
+
+            <div class="w-full mb-24">
+                <img src="Thumbnails/Feet.png" alt="Thumbnail for On Your Feet!" class="w-full h-auto rounded-xl shadow-lg">
+            </div>
+            
+            <div class="w-full max-w-2xl mx-auto mb-32 project-card p-10">
+                <table class="info-table">
+                    <tr>
+                        <td class="info-label">Role:</td>
+                        <td class="info-value">Creative Director, Level Designer</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Duration:</td>
+                        <td class="info-value">June 2025 – June 2026 (WIP)</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Genre:</td>
+                        <td class="info-value">2D Platformer, Beat Em’ Up</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Engine:</td>
+                        <td class="info-value">Unity</td>
+                    </tr>
+                </table>
+
+                <p class="text-xl text-gray-700 leading-relaxed mx-auto text-left">
+                    On Your Feet! Is a 2D Platformer Beat Em’ Up game, set to release in June 2026. After your father gets captured by aliens, you embark on a soccer adventure like no other, traveling through 8 countries in the process. With a team of two, I worked on project management and designed all the levels. 
                 </p>
             </div>
+
         </header>
 
-        <main class="w-full max-w-5xl">
-            <section>
-                <div class="project-card p-8 mb-12 flex flex-col items-center">
-                    <div class="w-full mb-6">
-                        <div class="carousel-wrapper">
-                            <h4 id="image-label" class="image-label"></h4>
-                            
-                            <div class="carousel-container" data-carousel-id="feet">
-                                
-                                <div class="carousel-slide" data-label="Bicycle Kick in Brazil">
-                                    <img src="Feet/Bicycle Kick in Brazil.png" alt="Bicycle Kick in Brazil level screenshot">
-                                </div>
-                                <div class="carousel-slide" data-label="Rabona in France">
-                                    <img src="Feet/Rabona in France.png" alt="Rabona in France level screenshot">
-                                </div>
-                                <div class="carousel-slide" data-label="Aim Kick in England">
-                                    <img src="Feet/Aim Kick in England.png" alt="Aim Kick in England level screenshot">
-                                </div>
-                                <div class="carousel-slide" data-label="Jumping on Spring in Portugal">
-                                    <img src="Feet/Jumping on Spring in Portugal.png" alt="Jumping on Spring in Portugal level screenshot">
-                                </div>
-                                <div class="carousel-slide" data-label="Italy">
-                                    <img src="Feet/Italy.png" alt="Italy level screenshot">
-                                </div>
-                                <div class="carousel-slide" data-label="Netherlands">
-                                    <img src="Feet/Netherlands.png" alt="Netherlands level screenshot">
-                                </div>
-                                
-                                <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
-                                <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
-                                <div class="carousel-dots"></div>
-                            </div>
-                        </div>
+        <main class="w-full max-w-5xl"> <section id="project-management-section" class="mb-32" style="display: block;">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Project Management</h2>
+                    
+                    <div class="w-full mb-12">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                            As Creative Director, I also hold the creative vision for this game, which is a passion project of mine. Since we only have a team of two, managing the project is a lot easier. This lets me give more over the shoulder feedback as I oversee all aspects of the game’s development, making sure all aspects align with my creative vision. My role also consists of designing all documentation for the game for concepts, story, and mechanics pipelines. Additionally, I conduct several playtesting sessions as development goes on to help iterate on designs, improving player experience. Here are some of my contributions as Creative Director.
+                        </p>
                     </div>
 
-                    <div class="w-full">
-                        <h3 class="text-3xl font-bold text-gray-900 mb-3">Key Responsibilities & Contributions</h3>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-                            <li><b>Creative Director</b>: Oversaw the project’s creative vision and alignment.</li>
-                            <li>Designed several unique levels that drive user engagement.</li>
-                            <li>Developed <b>comprehensive</b> design documentation for concepts, story, and mechanics pipelines.</li>
-                            <li>Conducted playtesting sessions and iterated on designs to improve <b>overall</b> player experience.</li>
-                        </ul>
-                        <p class="text-gray-800 font-semibold mb-2">Technologies Used:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-                            <li><b>Unity Engine</b></li>
-                            <li><b>C#</b> (Programming Language)</li>
-                            <li><b>Game Design, Level Design, Project Management</b></li>
-                        </ul>
-                        <div class="flex flex-wrap gap-3">
-                            <a href="https://www.youtube.com/watch?v=aC72K1Y5Gns" target="_blank" class="btn-primary">
-                                View Game Video
-                            </a>
-                            <a href="https://github.com/alparmelee/On-Your-Feet" target="_blank" class="btn-secondary">
-                                View Code Repository
-                            </a>
-                        </div>
+    
+                </div>
+            </section>
+            
+            <hr class="my-24 border-t-2 border-gray-300">
+            <section id="level-design-section" class="mb-32" style="display: block;">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Level Design</h2>
+                    
+                    <div class="w-full mb-12">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                            Our game features several levels spanning across 8 different worlds, and my role as Level Designer is to help design unique levels that drive player engagement and keep things fresh while introducing new mechanics along the way. Here are my contributions as Level Designer.
+                        </p>
                     </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16"> <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 1: Portugal (Port 1-1)</h3>
+                        <div class="level-comparison-container">
+                            <div class="media-item">
+                                <img src="Feet/Port 1-1.png" alt="Port 1-1 Level Concept" loading="lazy">
+                                <p class="label">Initial Concept Sketch</p>
+                            </div>
+                            <div class="media-item">
+                                <video src="Feet/Port 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
+                                <p class="label">Completed Level Gameplay</p>
+                            </div>
+                        </div>
+                        <p class="text-md text-gray-700 leading-relaxed text-center">
+                            The player must hit a button with their ball, which deactivates a wall, allowing them to move forward. Next, they must bounce the ball off another platform to hit an out-of-reach button, deactivating a second wall. They then sprint and long jump to reach a platform, and must crawl to get a key that opens a door. Finally, the player hits a series of platforms with the ball, which then strikes a final button, activating a bridge for a limited time and thus beating the level.
+                        </p>
+                    </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16"> <hr class="my-10 border-t border-gray-300">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 2: Italy (Italy 1-1)</h3>
+                        <div class="level-comparison-container">
+                            <div class="media-item">
+                                <img src="Feet/Italy 1-1.png" alt="Italy 1-1 Level Concept" loading="lazy">
+                                <p class="label">Initial Concept Sketch</p>
+                            </div>
+                            <div class="media-item">
+                                <video src="Feet/Italy 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
+                                <p class="label">Completed Level Gameplay</p>
+                            </div>
+                        </div>
+                        <p class="text-md text-gray-700 leading-relaxed text-center">
+                            The player uses the Charge Kick to break a pillar, jumps on a spring, and defeats an enemy. They then use the Charge Kick again to move a crate onto a pressure plate, which activates a bridge and deactivates more walls. The player then jumps on a series of springs to get to a platform that holds a key for unlocking a door. After getting the key, they must avoid a series of falling crates and spikes to reach the end of the level.
+                        </p>
+                    </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16"> <hr class="my-10 border-t border-gray-300">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 3: France (France 1-1)</h3>
+                        <div class="level-comparison-container">
+                            <div class="media-item">
+                                <img src="Feet/France 1-1.png" alt="France 1-1 Level Concept" loading="lazy">
+                                <p class="label">Initial Concept Sketch</p>
+                            </div>
+                            <div class="media-item">
+                                <video src="Feet/France 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
+                                <p class="label">Completed Level Gameplay</p>
+                            </div>
+                        </div>
+                        <p class="text-md text-gray-700 leading-relaxed text-center">
+                            The player uses the Aim Kick to reach a button, then uses it again to hit a moving switch. They must avoid enemies, bounce the ball off the ceiling to hit a switch, and then jump on a series of breakable platforms to evade more enemies. The player jumps onto a moving platform and hits a switch with the correct timing. After that, they hit a different switch to rotate platforms that have spikes on the bottom. The level concludes with the player riding an auto-scrolling platform while dodging enemies and hitting switches, thereby reaching the goal.
+                    </div>
+
+                </div>
+            </section>
+
+            <hr class="my-24 border-t-2 border-gray-300">
+            <section id="reflection-section" class="mb-24">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Reflection</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-center">
+                        I am currently working on this game with my friend Andrew and it's been a blast so far!
+                    </p>
                 </div>
             </section>
         </main>
 
-        <footer class="mt-12 text-center text-gray-600 text-sm" style="color:rgba(0, 0, 0, 1)">
+        <footer class="mt-24 text-center text-gray-600 text-sm" style="color:rgba(0, 0, 0, 1)">
             <p>&copy; 2025 Alexander Lynn. All rights reserved.</p>
             <p>Project Leader, University of Central Florida</p>
         </footer>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const carousel = document.querySelector('.carousel-container');
-
-            if (carousel) {
-                const slides = carousel.querySelectorAll('.carousel-slide');
-                const prevBtn = carousel.querySelector('.carousel-nav-btn.prev');
-                const nextBtn = carousel.querySelector('.carousel-nav-btn.next');
-                const dotsContainer = carousel.querySelector('.carousel-dots');
-                const imageLabel = document.getElementById('image-label'); // Get the label element
-                let currentSlideIndex = 0;
-
-                // 1. Create Dots
-                slides.forEach((_, index) => {
-                    const dot = document.createElement('span');
-                    dot.classList.add('carousel-dot');
-                    if (index === 0) {
-                        dot.classList.add('active');
-                    }
-                    dot.addEventListener('click', () => showSlide(index));
-                    dotsContainer.appendChild(dot);
-                });
-
-                const dots = dotsContainer.querySelectorAll('.carousel-dot');
-
-                function showSlide(index) {
-                    slides.forEach(slide => {
-                        slide.classList.remove('active');
-                    });
-                    dots.forEach(dot => dot.classList.remove('active'));
-
-                    // Set the active slide and dot
-                    const activeSlide = slides[index];
-                    activeSlide.classList.add('active');
-                    dots[index].classList.add('active');
-
-                    // Update the label text from the data-label attribute
-                    imageLabel.textContent = activeSlide.getAttribute('data-label');
-
-                    currentSlideIndex = index;
-                }
-
-                function nextSlide() {
-                    let newIndex = currentSlideIndex + 1;
-                    if (newIndex >= slides.length) {
-                        newIndex = 0;
-                    }
-                    showSlide(newIndex);
-                }
-
-                function prevSlide() {
-                    let newIndex = currentSlideIndex - 1;
-                    if (newIndex < 0) {
-                        newIndex = slides.length - 1;
-                    }
-                    showSlide(newIndex);
-                }
-
-                prevBtn.addEventListener('click', prevSlide);
-                nextBtn.addEventListener('click', nextSlide);
-
-                // Initialize the carousel
-                showSlide(currentSlideIndex);
-            }
-        });
-    </script>
 </body>
 </html>
