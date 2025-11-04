@@ -16,12 +16,12 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
             color: #374151;
+            overflow-y: scroll;
         }
 
-        /* Project Card specific styles */
         .project-card {
             background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 1.25rem;
+            border-radius: 1.20rem;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
@@ -30,9 +30,8 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        /* Button specific styles */
         .btn-primary {
-            background: linear-gradient(to right, #6366f1, #8b5cf6);
+            background: linear-gradient(to right, #4649ff, #3352ff);
             border: none;
             color: white;
             font-weight: 600;
@@ -42,28 +41,11 @@
             transition: all 0.3s ease-in-out;
         }
         .btn-primary:hover {
-            background: linear-gradient(to right, #4f46e5, #7c3aed);
+            background: linear-gradient(to right, #4649ff, #3352ff);
             transform: translateY(-2px);
             box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 6px -2px rgba(0, 0, 0, 0.08);
         }
 
-        .btn-secondary {
-            background: linear-gradient(to right, #4b5563, #6b7280);
-            border: none;
-            color: white;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1户 rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease-in-out;
-        }
-        .btn-secondary:hover {
-            background: linear-gradient(to right, #374151, #4b5563);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 10px -2px rgba(0, 0, 0, 0.15), 0 3px 6px -2px rgba(0, 0, 0, 0.08);
-        }
-
-        /* Header animation */
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -78,82 +60,6 @@
             animation: fadeInDown 1s ease-out forwards;
         }
 
-        /* Carousel specific styles (Adjusted for images) */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            height: auto; 
-            max-height: 80vh; 
-            overflow: hidden;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        .carousel-slide {
-            width: 100%;
-            height: auto;
-            display: none; 
-            transition: opacity 0.5s ease-in-out;
-            background-color: #000; 
-        }
-        .carousel-slide.active {
-            display: block; 
-            opacity: 1;
-        }
-        .carousel-slide img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            border-radius: 0.75rem;
-        }
-        
-        .carousel-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 0.75rem 0.5rem;
-            cursor: pointer;
-            font-size: 1.5rem;
-            z-index: 10;
-            border-radius: 0.5rem;
-            transition: background-color 0.3s ease;
-        }
-        .carousel-nav-btn:hover {
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-        .carousel-nav-btn.prev {
-            left: 0.5rem;
-        }
-        .carousel-nav-btn.next {
-            right: 0.5rem;
-        }
-
-        .carousel-dots {
-            position: absolute;
-            bottom: 0.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-            z-index: 10;
-        }
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .carousel-dot.active {
-            background-color: white;
-            transform: scale(1.2);
-        }
-
-        /* Navbar specific styles (Retained for completeness) */
         .navbar {
             position: fixed;
             top: 0;
@@ -168,10 +74,10 @@
         .navbar-link {
             color: #4a5568;
             font-weight: 600;
+            font-size: 1.35rem;
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             transition: all 0.2s ease-in-out;
-            font-size: 1.35rem;
         }
         .navbar-link:hover {
             background-color: #e2e8f0;
@@ -181,13 +87,64 @@
         .navbar-link.active {
             background: linear-gradient(to right, #4649ff, #3352ff);
             color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             font-size: 1.35rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-table {
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border-collapse: separate;
+            border-spacing: 0 1rem;
+        }
+        .info-table td {
+            padding: 1rem 0;
+        }
+        .info-label {
+            font-weight: 700;
+            color: #1f2937;
+            width: 30%;
+            font-size: 1.3rem;
+        }
+        .info-value {
+            color: #374151;
+            font-weight: 500;
+            width: 70%;
+            font-size: 1.3rem;
+        }
+
+        .ui-comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 2rem;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .ui-image-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background-color: #fff;
+        }
+        .ui-image-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            object-fit: contain;
+            /* ADJUSTED: Set to 16/10 aspect ratio for wider images (16:9 is 16/9, 16:12 is 4/3 or 16/12) */
+            aspect-ratio: 16/10; 
+            max-height: 400px; /* Reduced max height to compensate for width */
         }
     </style>
 </head>
 <body class="antialiased">
-    <div class="min-h-screen flex flex-col items-center py-10 px-4 sm:px-6 lg:px-8">
+    <div class="min-h-screen flex flex-col items-center py-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto">
 
         <nav class="navbar w-full py-4 px-6 flex justify-center">
             <div class="flex space-x-6">
@@ -197,130 +154,97 @@
             </div>
         </nav>
 
-        <header>
-            <div class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-20">
+        <header class="w-full flex flex-col items-center">
+            <div class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-32">
                 <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-4 leading-tight tracking-tight">
                     Fishy Business
                 </h1>
-                <p class="text-xl sm:text-2xl text-indigo-700 font-bold drop-shadow-sm" style="color:rgba(0, 0, 0, 1)">
-                    Producer & UI Designer at FishCat Studios
-                </p>
-                <p class="mt-4 text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto" style="color:rgba(0, 0, 0, 1)">
-                    As both the <b>Producer</b> and <b>UI Designer</b> for Fishy Business, I drove the project timeline and managed team communication while personally implementing the core player interface to ensure ease of navigation.
+            </div>
+
+            <div class="w-full mb-24 max-w-4xl">
+                <img src="Thumbnails/Fish.png" alt="Thumbnail for Fishy Business" class="w-full h-auto rounded-xl shadow-lg">
+            </div>
+            
+            <div class="w-full max-w-2xl mx-auto mb-32 project-card p-10">
+                <table class="info-table">
+                    <tr>
+                        <td class="info-label">Role:</td>
+                        <td class="info-value">Producer, UI Designer</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Duration:</td>
+                        <td class="info-value">September 2025 – December 2025 (WIP)</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Genre:</td>
+                        <td class="info-value">Tower Defense, Mobile</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Engine:</td>
+                        <td class="info-value">Unreal Engine</td>
+                    </tr>
+                </table>
+
+                <p class="text-xl text-gray-700 leading-relaxed mx-auto text-left">
+                    Fishy Business is a 2D Tower Defense mobile game, set to release in December 2025. Catch fish in the water and sell them to grow your fisherman business and save your people! Currently I am the producer of the game and I also worked on UI design.
                 </p>
             </div>
+
         </header>
 
         <main class="w-full max-w-5xl">
-            <section>
-                <div class="project-card p-8 mb-12 flex flex-col items-center">
-                    <div class="w-full mb-6">
-                        <div class="carousel-wrapper">
-                            
-                            <div class="carousel-container" data-carousel-id="fishy">
-                                
-                                <div class="carousel-slide">
-                                    <img src="Fishy/Main Menu.png" alt="Fishy Business Main Menu">
-                                </div>
-                                <div class="carousel-slide">
-                                    <img src="Fishy/Pause Menu.png" alt="Fishy Business Pause Menu">
-                                </div>
-                                
-                                <button class="carousel-nav-btn prev" aria-label="Previous Slide">&#10094;</button>
-                                <button class="carousel-nav-btn next" aria-label="Next Slide">&#10095;</button>
-                                <div class="carousel-dots"></div>
-                            </div>
-                        </div>
-                    </div>
+            
+            <section id="project-management-section" class="mb-32" style="display: block;">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Project Management</h2>
+                    
+                    <div class="w-full mb-12">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                            As the Producer, I lead over a team of seven, scheduling meetings and delegating tasks on a weekly basis. Again, communication is very important here. Team collaboration is crucial to ensure that all standards are set from the get-go and deadlines are met successfully. As Producer, I was also heavily involved in handling the documentation for the game, including the GDD, ASG, team contracts, and more.
 
-                    <div class="w-full">
-                        <h3 class="text-3xl font-bold text-gray-900 mb-3">Key Accomplishments</h3>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-                            <li><b>Led a team of seven</b>, scheduling meetings and assigning tasks weekly.</li>
-                            <li><b>Implemented all UI elements</b>, providing the player with ease of navigation.</li>
-                            <li><b>Developed design documentation</b> including GDD, ASG, product backlog, and team contract.</li>
-                            <li><b>Collaborated with team members</b> to ensure that the game meets deadlines and standards set.</li>
-                        </ul>
-                        <p class="text-gray-800 font-semibold mb-2">Skills Utilized:</p>
-                        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-1">
-                            <li><b>Producer</b></li>
-                            <li><b>UI Designer</b></li>
-                            <li><b>Team Leadership</b></li>
-                            <li><b>Project Management</b></li>
-                            <li><b>Design Documentation (GDD, ASG)</b></li>
-                        </ul>
+                </div>
+            </section>
+            
+            <hr class="my-24 border-t-2 border-gray-300">
+            <section id="ui-section" class="mb-32" style="display: block;">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">User Interface (UI) Design</h2>
+                    
+                    <div class="w-full mb-12 max-w-4xl">
+
+                        <div class="ui-comparison-container">
+                            <div class="ui-image-card">
+                                <img src="Fishy/Main Menu.png" alt="Fishy Business Main Menu" loading="lazy">
+                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Main Menu Design</h4>
+                                <p class="text-md text-gray-600 text-center">
+                                    Designed for clear, immediate access to starting the game, quitting, shopping, and settings, with a visually appealing layout to engage users right away.
+                                </p>
+                            </div>
+                            <div class="ui-image-card">
+                                <img src="Fishy/Pause Menu.png" alt="Fishy Business Pause Menu" loading="lazy">
+                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Pause Menu Design</h4>
+                                <p class="text-md text-gray-600 text-center">
+                                    A simple, focused interface that allows quick return to the game, restarting the level or quitting.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+
+            <hr class="my-24 border-t-2 border-gray-300">
+            <section id="reflection-section" class="mb-24">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Reflection</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-center">
+                        Throughout development of Fishy Business, I’d say I’ve learned a good amount so far. I’ve learned that making a mobile game in Unreal Engine is harder than it looks, the importance of team communication and meetings, how rewarding the results can be when properly sticking to schedules and deadlines, and overall aspects of the multiple responsibilities a producer needs to juggle during production. In terms of UI Design, I’ve learned to adjust my PC minded brain to fit for mobile users, changing my workflow in the process.
+            </section>
         </main>
 
-        <footer class="mt-12 text-center text-gray-600 text-sm" style="color:rgba(0, 0, 0, 1)">
+        <footer class="mt-24 text-center text-gray-600 text-sm" style="color:rgba(0, 0, 0, 1)">
             <p>&copy; 2025 Alexander Lynn. All rights reserved.</p>
             <p>Project Leader, University of Central Florida</p>
         </footer>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const carousel = document.querySelector('.carousel-container');
-
-            if (carousel) {
-                const slides = carousel.querySelectorAll('.carousel-slide');
-                const prevBtn = carousel.querySelector('.carousel-nav-btn.prev');
-                const nextBtn = carousel.querySelector('.carousel-nav-btn.next');
-                const dotsContainer = carousel.querySelector('.carousel-dots');
-                let currentSlideIndex = 0;
-
-                // 1. Create Dots
-                slides.forEach((_, index) => {
-                    const dot = document.createElement('span');
-                    dot.classList.add('carousel-dot');
-                    if (index === 0) {
-                        dot.classList.add('active');
-                    }
-                    dot.addEventListener('click', () => showSlide(index));
-                    dotsContainer.appendChild(dot);
-                });
-
-                const dots = dotsContainer.querySelectorAll('.carousel-dot');
-
-                function showSlide(index) {
-                    slides.forEach(slide => {
-                        slide.classList.remove('active');
-                    });
-                    dots.forEach(dot => dot.classList.remove('active'));
-
-                    // Set the active slide and dot
-                    slides[index].classList.add('active');
-                    dots[index].classList.add('active');
-
-                    currentSlideIndex = index;
-                }
-
-                function nextSlide() {
-                    let newIndex = currentSlideIndex + 1;
-                    if (newIndex >= slides.length) {
-                        newIndex = 0;
-                    }
-                    showSlide(newIndex);
-                }
-
-                function prevSlide() {
-                    let newIndex = currentSlideIndex - 1;
-                    if (newIndex < 0) {
-                        newIndex = slides.length - 1;
-                    }
-                    showSlide(newIndex);
-                }
-
-                prevBtn.addEventListener('click', prevSlide);
-                nextBtn.addEventListener('click', nextSlide);
-
-                // Initialize the carousel
-                showSlide(currentSlideIndex);
-            }
-        });
-    </script>
 </body>
 </html>
