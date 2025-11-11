@@ -114,30 +114,53 @@
             font-size: 1.3rem;
         }
 
-        /* Media responsiveness for mobile devices */
-        @media (max-width: 768px) {
-            /* Ensures background scrolls smoothly on mobile */
-            body {
-                background-attachment: scroll;
-            }
-            /* Stacks info table for readability on smaller screens */
-            .info-label, .info-value {
-                display: block;
-                width: 100%;
-                text-align: left;
-                padding: 0.5rem 0;
-                font-size: 1.1rem;
-            }
-            .info-table td {
-                display: block;
-                padding: 0;
-            }
-            .info-table {
-                border-spacing: 0 0.5rem;
-            }
+        /* Adjusted for larger comparison section */
+        .level-comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns for image and video */
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            width: 100%;
         }
 
-        /* Styles for the fullscreen overlay/modal (kept for thumbnail image) */
+        .media-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Ensures rounded corners */
+            background-color: #f3f4f6; /* Light background for consistency */
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio - fixed aspect for media */
+            position: relative;
+            cursor: pointer; /* Add pointer cursor for clickability */
+        }
+        .media-item img,
+        .media-item video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Keeps entire image/video visible */
+            border-radius: 0.75rem;
+            background-color: #000; /* Black background for videos and images in full screen */
+        }
+        .media-item p.label {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            z-index: 5;
+        }
+
+        /* Styles for the fullscreen overlay/modal */
         .fullscreen-overlay {
             position: fixed;
             top: 0;
@@ -183,8 +206,8 @@
 </head>
 <body class="antialiased">
 
-    <div id="fullscreenOverlay" class="fullscreen-overlay" role="dialog" aria-modal="true" onclick="closeFullscreen()">
-        <span class="close-btn" onclick="closeFullscreen()" aria-label="Close Fullscreen">&times;</span>
+    <div id="fullscreenOverlay" class="fullscreen-overlay" onclick="closeFullscreen()">
+        <span class="close-btn" onclick="closeFullscreen()">&times;</span>
         <div id="fullscreenContent" class="fullscreen-content">
             <img id="fullscreenImage" src="" alt="Full Screen Image">
         </div>
@@ -193,10 +216,10 @@
     <div class="min-h-screen flex flex-col items-center py-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto">
 
         <nav class="navbar w-full py-4 px-6 flex justify-center">
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="navbar-link active">Work</a></li>
-                <li><a href="about.html" class="navbar-link">About</a></li>
-            </ul>
+            <div class="flex space-x-6">
+                <a href="index.html" class="navbar-link active">Work</a>
+                <a href="about.html" class="navbar-link">About</a>
+            </div>
         </nav>
 
         <header class="w-full flex flex-col items-center">
@@ -220,7 +243,7 @@
                         <td class="info-label">Duration:</td>
                         <td class="info-value">June 2025 – June 2026 (WIP)</td>
                     </tr>
-                    <tr>
+                                        <tr>
                         <td class="info-label">Team size:</td>
                         <td class="info-value">2</td>
                     </tr>
@@ -241,89 +264,89 @@
 
         </header>
 
-        <main class="w-full max-w-5xl"> 
-            
-            <section id="gameplay-programming-section" class="mb-32">
+        <main class="w-full max-w-5xl"> <section id="project-management-section" class="mb-32" style="display: block;">
                 <div class="project-card p-12 flex flex-col items-center">
-                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Gameplay Programming</h2>
-
-                    <div class="w-full mb-12 max-w-4xl">
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                            In the prototyping phase, I was tasked with developing systems related to our core gameplay mechanics. In the 2 week window we were given, I was able to successfully program all player movement and mechanics, providing the foundation for player engagement. These systems include:
-                        </p>
-                        <ul class="list-disc list-inside space-y-3 text-lg text-gray-700 leading-relaxed ml-4">
-                            <li><strong>Player movement:</strong> Basic walk to run function, synced up nicely with animation blend trees.</li>
-                            <li><strong>Shielding:</strong> Player raises their shield to block incoming attacks.</li>
-                            <li><strong>Strafing:</strong> With shield raised, player moves at a set speed with rotation locked.</li>
-                            <li><strong>Dodging:</strong> Player performs quick movement displacement over a certain distance, depending on direction of controller.</li>
-                            <li><strong>Lock On:</strong> Orients player camera towards an enemy when toggled. Disabled by toggle/walking away from target.</li>
-                            <li><strong>Quick attacks:</strong> Short, quick swings dealing decent damage. A 1.5 second timer is fired for each time the player presses the Quick Attack input, giving them a short window of time before their combo resets. These attacks finish with a powerful ground strike.</li>
-                            <li><strong>Strong attacks:</strong> Longer, slower swings that use more of the player’s momentum but do a lot of damage. A 1.5 second timer is fired for each time the player presses the Quick Attack input, giving them a short window of time before their combo resets. These attacks finish with a powerful aerial strike.</li>
-                            <li><strong>Combining attacks:</strong> Players can switch between Quick and Strong Attacks mid combo, giving more freedom of expression and allowing more options for the player to experiment with, creating fun and engaging combat.</li>
-                            <li><strong>Charge Attack:</strong> Long buildup releases a powerful swing, dealing a lot of damage.</li>
-                            <li><strong>Divine intervention:</strong> When Divine Meter is full, player can call down powerful strike, devastating their opponents as an engaging cinematic plays.</li>
-                        </ul>
-                    </div>
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Project Management</h2>
                     
-                    <div class="w-full max-w-4xl mx-auto mb-16">
-                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Gameplay Programming Video</h3>
-                        <div class="relative pt-[56.25%] w-full h-0">
-                            <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
-                                src="https://www.youtube.com/embed/uw2Y_--RW28?si=j11315Z2XvkuZPtT" 
-                                title="YouTube video player - Gameplay Programming" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
+                    <div class="w-full mb-12">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                            As Creative Director, I also hold the creative vision for this game, which is a passion project of mine. Since we only have a team of two, managing the project is a lot easier. This lets me give more over the shoulder feedback as I oversee all aspects of the game’s development, making sure all aspects align with my creative vision. My role also consists of designing all documentation for the game for concepts, story, and mechanics pipelines. Additionally, I conduct several playtesting sessions as development goes on to help iterate on designs, improving player experience. Here are some of my contributions as Creative Director.
+                        </p>
                     </div>
+
+    
                 </div>
             </section>
             
             <hr class="my-24 border-t-2 border-gray-300">
-            
-            <section id="ui-design-section" class="mb-32">
+            <section id="level-design-section" class="mb-32" style="display: block;">
                 <div class="project-card p-12 flex flex-col items-center">
-                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">UI Design</h2>
-
-                    <div class="w-full mb-12 max-w-4xl">
-                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
-                            As UI Designer, I implemented all UI elements in game, ensuring seamless player interaction. I utilized Unreal Engine's CommonUI plugin to accomplish all my intended UI goals for the game. This game challenged me more than any other in my journey with UI Design so far, and it ended up being very fun to make. My contributions for UI design include:
-                        </p>
-                        <ul class="list-disc list-inside space-y-3 text-lg text-gray-700 leading-relaxed ml-4">
-                            <li><strong>Main Menu:</strong> Button layouts for Start, Continue, Settings, Credits, and Quit with live menu background implemented.</li>
-                            <li><strong>Settings Menu:</strong> Options to change video settings, audio settings, and view controls and combo lists.</li>
-                            <li><strong>Video Settings:</strong> Options to change Resolution, Window Mode, Vsync, Frame Rate, and Graphics settings. These settings save once you apply them, with the option to reset to default implemented as well.</li>
-                            <li><strong>Audio Settings:</strong> Options to change audio settings, including SFX, Music, and Voice Lines. These settings save once you apply them, with the option to reset to default implemented as well.</li>
-                            <li><strong>Level Select:</strong> Select which level you want to play once you start the game.</li>
-                            <li><strong>Pause Menu:</strong> Sets the game paused and gives options to Continue, view Settings, or Quit to Main Menu.</li>
-                            <li><strong class="text-indigo-600">All menus are fully controller compatible.</strong></li>
-                        </ul>
-                    </div>
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-left">Level Design</h2>
                     
-                    <div class="w-full max-w-4xl mx-auto mb-16">
-                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">UI Video</h3>
-                        <div class="relative pt-[56.25%] w-full h-0">
-                            <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
-                                src="https://www.youtube.com/embed/4Etu7GeNgwc?si=-9I8s4NLXi48SDYe" 
-                                title="YouTube video player - UI Design" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
+                    <div class="w-full mb-12">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                            Our game features several levels spanning across 8 different worlds, and my role as Level Designer is to help design unique levels that drive player engagement and keep things fresh while introducing new mechanics along the way. Here are my contributions as Level Designer.
+                        </p>
                     </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16"> <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 1: Portugal (Port 1-1)</h3>
+                        <div class="level-comparison-container">
+                            <div class="media-item">
+                                <img src="Feet/Port 1-1.png" alt="Port 1-1 Level Concept" loading="lazy" onclick="openFullscreen('Feet/Port 1-1.png')">
+                                <p class="label">Initial Concept Sketch</p>
+                            </div>
+                            <div class="media-item" onclick="event.stopPropagation();">
+                                <video src="Feet/Port 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
+                                <p class="label">Completed Level Gameplay</p>
+                            </div>
+                        </div>
+                        <p class="text-md text-gray-700 leading-relaxed text-left">
+                            The player must hit a button with their ball, which deactivates a wall, allowing them to move forward. Next, they must bounce the ball off another platform to hit an out-of-reach button, deactivating a second wall. They then sprint and long jump to reach a platform, and must crawl to get a key that opens a door. Finally, the player hits a series of platforms with the ball, which then strikes a final button, activating a bridge for a limited time and thus beating the level.
+                        </p>
+                    </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16"> <hr class="my-10 border-t border-gray-300">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 2: Italy (Italy 1-1)</h3>
+                        <div class="level-comparison-container">
+                            <div class="media-item">
+                                <img src="Feet/Italy 1-1.png" alt="Italy 1-1 Level Concept" loading="lazy" onclick="openFullscreen('Feet/Italy 1-1.png')">
+                                <p class="label">Initial Concept Sketch</p>
+                            </div>
+                            <div class="media-item" onclick="event.stopPropagation();">
+                                <video src="Feet/Italy 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
+                                <p class="label">Completed Level Gameplay</p>
+                            </div>
+                        </div>
+                        <p class="text-md text-gray-700 leading-relaxed text-left">
+                            The player uses the Charge Kick to break a pillar, jumps on a spring, and defeats an enemy. They then use the Charge Kick again to move a crate onto a pressure plate, which activates a bridge and deactivates more walls. The player then jumps on a series of springs to get to a platform that holds a key for unlocking a door. After getting the key, they must avoid a series of falling crates and spikes to reach the end of the level.
+                        </p>
+                    </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16"> <hr class="my-10 border-t border-gray-300">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 3: France (France 1-1)</h3>
+                        <div class="level-comparison-container">
+                            <div class="media-item">
+                                <img src="Feet/France 1-1.png" alt="France 1-1 Level Concept" loading="lazy" onclick="openFullscreen('Feet/France 1-1.png')">
+                                <p class="label">Initial Concept Sketch</p>
+                            </div>
+                            <div class="media-item" onclick="event.stopPropagation();">
+                                <video src="Feet/France 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
+                                <p class="label">Completed Level Gameplay</p>
+                            </div>
+                        </div>
+                        <p class="text-md text-gray-700 leading-relaxed text-left">
+                            The player uses the Aim Kick to reach a button, then uses it again to hit a moving switch. They must avoid enemies, bounce the ball off the ceiling to hit a switch, and then jump on a series of breakable platforms to evade more enemies. The player jumps onto a moving platform and hits a switch with the correct timing. After that, they hit a different switch to rotate platforms that have spikes on the bottom. The level concludes with the player riding an auto-scrolling platform while dodging enemies and hitting switches, thereby reaching the goal.
+                        </p>
+                    </div>
+
                 </div>
             </section>
-
 
         <hr class="my-24 border-t-2 border-gray-300">
         <section id="reflection-section" class="mb-24">
             <div class="project-card p-12 flex flex-col items-center">
                 <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Reflection</h2>
-                <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-left">
+                <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto **text-left**">
                     On Your Feet! has been a blast to work on so far! I've been coming up with concepts since around November 2024, and it's really awesome seeing the progress we've made since the start of development. This project has really helped me refine my creative mind and use the full extent of my imagination to flesh out all my ideas effectively. My 1 on 1 leadership skills has also improved a lot as me and Andrew continue to do great work together!
                 </p>
             </div>
