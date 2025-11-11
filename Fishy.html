@@ -188,6 +188,87 @@
             padding: 10px;
             line-height: 1;
         }
+
+        /* Carousel Styles (Copied from previous implementation) */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 129.4%; /* Document aspect ratio 1:1.294 (8.5x11) */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background-color: #000;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            background-color: #000;
+        }
+        .carousel-slide.active {
+            display: block;
+            opacity: 1;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 0.75rem;
+            cursor: pointer;
+        }
+
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.75rem 0.5rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .carousel-nav-btn.prev {
+            left: 0.5rem;
+        }
+        .carousel-nav-btn.next {
+            right: 0.5rem;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .carousel-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -254,13 +335,71 @@
             
             <section id="project-management-section" class="mb-32" style="display: block;">
                 <div class="project-card p-12 flex flex-col items-center">
-                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Project Management</h2>
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Project Management & Documentation</h2>
                     
                     <div class="w-full mb-12">
                         <p class="text-lg text-gray-700 leading-relaxed mb-4">
                             As the Producer, I lead over a team of seven, scheduling meetings and delegating tasks on a weekly basis. Again, communication is very important here. Team collaboration is crucial to ensure that all standards are set from the get-go and deadlines are met successfully. As Producer, I was also heavily involved in handling the documentation for the game, including the GDD, ASG, team contracts, and more.
-
+                        </p>
+                        
                     </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Product Backlog Screenshots</h3>
+                        <div id="backlog-carousel" class="carousel-container mx-auto">
+                            <div class="carousel-slide active" data-index="0">
+                                <img src="FishyDoc/Backlog_1.png" alt="Backlog Screenshot 1" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="1">
+                                <img src="FishyDoc/Backlog_2.png" alt="Backlog Screenshot 2" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="2">
+                                <img src="FishyDoc/Backlog_3.png" alt="Backlog Screenshot 3" onclick="openFullscreen(this.src)">
+                            </div>
+                            <button class="carousel-nav-btn prev" onclick="prevSlide('backlog-carousel')">&#10094;</button>
+                            <button class="carousel-nav-btn next" onclick="nextSlide('backlog-carousel')">&#10095;</button>
+                            <div class="carousel-dots" id="backlog-dots">
+                                <span class="carousel-dot active" onclick="currentSlide('backlog-carousel', 0)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('backlog-carousel', 1)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('backlog-carousel', 2)"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Game Design / Art Style Guide (GDD/ASG) Screenshots</h3>
+                        <div id="gddasg-carousel" class="carousel-container mx-auto">
+                            <div class="carousel-slide active" data-index="0">
+                                <img src="FishyDoc/GDD+ASG_1.png" alt="GDD/ASG Screenshot 1" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="1">
+                                <img src="FishyDoc/GDD+ASG_2.png" alt="GDD/ASG Screenshot 2" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="2">
+                                <img src="FishyDoc/GDD+ASG_3.png" alt="GDD/ASG Screenshot 3" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="3">
+                                <img src="FishyDoc/GDD+ASG_4.png" alt="GDD/ASG Screenshot 4" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="4">
+                                <img src="FishyDoc/GDD+ASG_5.png" alt="GDD/ASG Screenshot 5" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="5">
+                                <img src="FishyDoc/GDD+ASG_6.png" alt="GDD/ASG Screenshot 6" onclick="openFullscreen(this.src)">
+                            </div>
+                            <button class="carousel-nav-btn prev" onclick="prevSlide('gddasg-carousel')">&#10094;</button>
+                            <button class="carousel-nav-btn next" onclick="nextSlide('gddasg-carousel')">&#10095;</button>
+                            <div class="carousel-dots" id="gddasg-dots">
+                                <span class="carousel-dot active" onclick="currentSlide('gddasg-carousel', 0)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gddasg-carousel', 1)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gddasg-carousel', 2)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gddasg-carousel', 3)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gddasg-carousel', 4)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gddasg-carousel', 5)"></span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
             
@@ -291,15 +430,15 @@
                 </div>
             </section>
 
-        <hr class="my-24 border-t-2 border-gray-300">
-        <section id="reflection-section" class="mb-24">
-            <div class="project-card p-12 flex flex-col items-center">
-                <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Reflection</h2>
-                <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto **text-left**">
-                    Throughout development of Fishy Business, I’d say I’ve learned a good amount so far. I’ve learned that making a mobile game in Unreal Engine is harder than it looks, the importance of team communication and meetings, how rewarding the results can be when properly sticking to schedules and deadlines, and overall aspects of the multiple responsibilities a producer needs to juggle during production. In terms of UI Design, I’ve learned to adjust my PC minded brain to fit for mobile users, changing my workflow in the process.
-                </p>
-            </div>
-        </section>
+            <hr class="my-24 border-t-2 border-gray-300">
+            <section id="reflection-section" class="mb-24">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Reflection</h2>
+                    <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-left">
+                        Throughout development of Fishy Business, I’d say I’ve learned a good amount so far. I’ve learned that making a mobile game in Unreal Engine is harder than it looks, the importance of team communication and meetings, how rewarding the results can be when properly sticking to schedules and deadlines, and overall aspects of the multiple responsibilities a producer needs to juggle during production. In terms of UI Design, I’ve learned to adjust my PC minded brain to fit for mobile users, changing my workflow in the process.
+                    </p>
+                </div>
+            </section>
         </main>
 
         <footer class="mt-24 text-center text-gray-600 text-sm" style="color:rgba(0, 0, 0, 1)">
@@ -309,22 +448,88 @@
     </div>
 
     <script>
+        // Global function to manage slide index
+        const slideIndices = {
+            'backlog-carousel': 0,
+            'gddasg-carousel': 0
+        };
+
+        // Function to show a specific slide
+        function showSlide(carouselId, n) {
+            const carousel = document.getElementById(carouselId);
+            if (!carousel) return;
+
+            const slides = carousel.getElementsByClassName('carousel-slide');
+            const dotContainerId = carouselId.replace('-carousel', '-dots');
+            const dotContainer = document.getElementById(dotContainerId);
+            
+            // Check if dots exist before trying to access them
+            const dots = dotContainer ? dotContainer.getElementsByClassName('carousel-dot') : [];
+            const totalSlides = slides.length;
+
+            if (totalSlides === 0) return;
+
+            if (n >= totalSlides) {
+                slideIndices[carouselId] = 0;
+            } else if (n < 0) {
+                slideIndices[carouselId] = totalSlides - 1;
+            } else {
+                slideIndices[carouselId] = n;
+            }
+
+            // Hide all slides and remove active class from dots
+            for (let i = 0; i < totalSlides; i++) {
+                slides[i].classList.remove('active');
+                if (dots.length > i) {
+                    dots[i].classList.remove('active');
+                }
+            }
+
+            // Show the current slide and activate the current dot
+            slides[slideIndices[carouselId]].classList.add('active');
+            if (dots.length > slideIndices[carouselId]) {
+                dots[slideIndices[carouselId]].classList.add('active');
+            }
+        }
+
+        // Functions to move to next or previous slide
+        function nextSlide(carouselId) {
+            showSlide(carouselId, slideIndices[carouselId] + 1);
+        }
+
+        function prevSlide(carouselId) {
+            showSlide(carouselId, slideIndices[carouselId] - 1);
+        }
+
+        // Function to go to a specific dot's slide
+        function currentSlide(carouselId, n) {
+            showSlide(carouselId, n);
+        }
+
+        // Fullscreen Modal Functions (existing)
         function openFullscreen(imageSrc) {
             document.getElementById('fullscreenImage').src = imageSrc;
             document.getElementById('fullscreenOverlay').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; 
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when fullscreen
         }
 
         function closeFullscreen() {
             document.getElementById('fullscreenOverlay').style.display = 'none';
-            document.body.style.overflow = 'scroll'; 
+            document.body.style.overflow = 'scroll'; // Re-enable scrolling
         }
 
+        // Close on escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === "Escape") {
                 closeFullscreen();
             }
         });
+
+        // Initialize carousels on load
+        window.onload = function() {
+            showSlide('backlog-carousel', 0);
+            showSlide('gddasg-carousel', 0);
+        };
     </script>
 </body>
 </html>

@@ -63,11 +63,13 @@
         .carousel-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%;
+            /* For A4 aspect ratio (210mm x 297mm or 1:1.414) we'll use a common doc ratio like 1:1.294 (8.5x11) */
+            padding-bottom: 129.4%; /* 1 / 0.772 * 100% */
             height: 0;
             overflow: hidden;
             border-radius: 0.75rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background-color: #000; /* Black background for contrast */
         }
 
         .video-label {
@@ -93,6 +95,7 @@
             width: 100%;
             height: 100%;
             display: none;
+            opacity: 0; /* Use opacity for transition */
             transition: opacity 0.5s ease-in-out;
             background-color: #000;
         }
@@ -104,9 +107,9 @@
         .carousel-slide video {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: contain; /* Ensures the image fits within the container while maintaining aspect ratio */
             border-radius: 0.75rem;
-            cursor: pointer; /* Add cursor for images in carousel */
+            cursor: pointer;
         }
 
         .carousel-nav-btn {
@@ -334,13 +337,83 @@ design, and gameplay programming.
                         
                     </div>
 
+                    <div class="w-full max-w-4xl mx-auto mb-16">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Game Design Document (GDD) Screenshots</h3>
+                        <div id="gdd-carousel" class="carousel-container mx-auto">
+                            <div class="carousel-slide active" data-index="0">
+                                <img src="DavidDock/GDD_1.png" alt="GDD Screenshot 1" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="1">
+                                <img src="DavidDock/GDD_2.png" alt="GDD Screenshot 2" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="2">
+                                <img src="DavidDock/GDD_3.png" alt="GDD Screenshot 3" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="3">
+                                <img src="DavidDock/GDD_4.png" alt="GDD Screenshot 4" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="4">
+                                <img src="DavidDock/GDD_5.png" alt="GDD Screenshot 5" onclick="openFullscreen(this.src)">
+                            </div>
+                            <button class="carousel-nav-btn prev" onclick="prevSlide('gdd-carousel')">&#10094;</button>
+                            <button class="carousel-nav-btn next" onclick="nextSlide('gdd-carousel')">&#10095;</button>
+                            <div class="carousel-dots" id="gdd-dots">
+                                <span class="carousel-dot active" onclick="currentSlide('gdd-carousel', 0)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 1)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 2)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 3)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 4)"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Art Style Guide (ASG) Screenshots</h3>
+                        <div id="asg-carousel" class="carousel-container mx-auto">
+                            <div class="carousel-slide active" data-index="0">
+                                <img src="DavidDock/ASG_1.png" alt="ASG Screenshot 1" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="1">
+                                <img src="DavidDock/ASG_2.png" alt="ASG Screenshot 2" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="2">
+                                <img src="DavidDock/ASG_3.png" alt="ASG Screenshot 3" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="3">
+                                <img src="DavidDock/ASG_4.png" alt="ASG Screenshot 4" onclick="openFullscreen(this.src)">
+                            </div>
+                            <button class="carousel-nav-btn prev" onclick="prevSlide('asg-carousel')">&#10094;</button>
+                            <button class="carousel-nav-btn next" onclick="nextSlide('asg-carousel')">&#10095;</button>
+                            <div class="carousel-dots" id="asg-dots">
+                                <span class="carousel-dot active" onclick="currentSlide('asg-carousel', 0)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('asg-carousel', 1)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('asg-carousel', 2)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('asg-carousel', 3)"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </section>
 
-         <section id="gameplay-programming-section" class="mb-32">
+           <section id="gameplay-programming-section" class="mb-32">
                 <div class="project-card p-12 flex flex-col items-center">
                     <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Gameplay Programming</h2>
 
+                    <div class="w-full max-w-4xl mx-auto mb-12">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Gameplay Programming Video</h3>
+                        <div class="relative pt-[56.25%] w-full h-0">
+                            <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
+                                src="https://www.youtube.com/embed/uw2Y_--RW28?si=j11315Z2XvkuZPtT" 
+                                title="YouTube video player - Gameplay Programming" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
                     <div class="w-full mb-12 max-w-4xl">
                         <p class="text-lg text-gray-700 leading-relaxed mb-6">
                             In the prototyping phase, I was tasked with developing systems related to our core gameplay mechanics. In the 2 week window we were given, I was able to successfully program all player movement and mechanics, providing the foundation for player engagement. These systems include:
@@ -358,20 +431,6 @@ design, and gameplay programming.
                             <li><strong>Divine intervention:</strong> When Divine Meter is full, player can call down powerful strike, devastating their opponents as an engaging cinematic plays.</li>
                         </ul>
                     </div>
-                    
-                    <div class="w-full max-w-4xl mx-auto mb-16">
-                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Gameplay Programming Video</h3>
-                        <div class="relative pt-[56.25%] w-full h-0">
-                            <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
-                                src="https://www.youtube.com/embed/uw2Y_--RW28?si=j11315Z2XvkuZPtT" 
-                                title="YouTube video player - Gameplay Programming" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                    </div>
                 </div>
             </section>
             
@@ -381,6 +440,19 @@ design, and gameplay programming.
                 <div class="project-card p-12 flex flex-col items-center">
                     <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">UI Design</h2>
 
+                    <div class="w-full max-w-4xl mx-auto mb-12">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">UI Video</h3>
+                        <div class="relative pt-[56.25%] w-full h-0">
+                            <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
+                                src="https://www.youtube.com/embed/4Etu7GeNgwc?si=-9I8s4NLXi48SDYe" 
+                                title="YouTube video player - UI Design" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
                     <div class="w-full mb-12 max-w-4xl">
                         <p class="text-lg text-gray-700 leading-relaxed mb-6">
                             As UI Designer, I implemented all UI elements in game, ensuring seamless player interaction. I utilized Unreal Engine's CommonUI plugin to accomplish all my intended UI goals for the game. This game challenged me more than any other in my journey with UI Design so far, and it ended up being very fun to make. My contributions for UI design include:
@@ -395,20 +467,6 @@ design, and gameplay programming.
                             <li><strong class="text-indigo-600">All menus are fully controller compatible.</strong></li>
                         </ul>
                     </div>
-                    
-                    <div class="w-full max-w-4xl mx-auto mb-16">
-                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">UI Video</h3>
-                        <div class="relative pt-[56.25%] w-full h-0">
-                            <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
-                                src="https://www.youtube.com/embed/4Etu7GeNgwc?si=-9I8s4NLXi48SDYe" 
-                                title="YouTube video player - UI Design" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                referrerpolicy="strict-origin-when-cross-origin" 
-                                allowfullscreen>
-                            </iframe>
-                        </div>
-                    </div>
                 </div>
             </section>
 
@@ -419,6 +477,7 @@ design, and gameplay programming.
                 <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Reflection</h2>
                 <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-left">
                     This project so far has been the largest undertaking of anything I’ve been a part of in my game development career. Being the leader over a multi-semester project in my capstone class complete with a full production cycle has been the best learning experience I’ve had in university. It’s not only helped me become a more well-rounded game developer but has also strengthened my leadership skills and style significantly. It’s also helped me see just how much really goes into production of a studio led game.
+                </p>
             </div>
         </section>
         </main>
@@ -430,6 +489,53 @@ design, and gameplay programming.
     </div>
 
     <script>
+        // Global function to manage slide index
+        const slideIndices = {
+            'gdd-carousel': 0,
+            'asg-carousel': 0
+        };
+
+        // Function to show a specific slide
+        function showSlide(carouselId, n) {
+            const carousel = document.getElementById(carouselId);
+            const slides = carousel.getElementsByClassName('carousel-slide');
+            const dots = document.getElementById(carouselId.replace('-carousel', '-dots')).getElementsByClassName('carousel-dot');
+            const totalSlides = slides.length;
+
+            if (n >= totalSlides) {
+                slideIndices[carouselId] = 0;
+            } else if (n < 0) {
+                slideIndices[carouselId] = totalSlides - 1;
+            } else {
+                slideIndices[carouselId] = n;
+            }
+
+            // Hide all slides and remove active class from dots
+            for (let i = 0; i < totalSlides; i++) {
+                slides[i].classList.remove('active');
+                dots[i].classList.remove('active');
+            }
+
+            // Show the current slide and activate the current dot
+            slides[slideIndices[carouselId]].classList.add('active');
+            dots[slideIndices[carouselId]].classList.add('active');
+        }
+
+        // Functions to move to next or previous slide
+        function nextSlide(carouselId) {
+            showSlide(carouselId, slideIndices[carouselId] + 1);
+        }
+
+        function prevSlide(carouselId) {
+            showSlide(carouselId, slideIndices[carouselId] - 1);
+        }
+
+        // Function to go to a specific dot's slide
+        function currentSlide(carouselId, n) {
+            showSlide(carouselId, n);
+        }
+
+        // Fullscreen Modal Functions (existing)
         function openFullscreen(imageSrc) {
             document.getElementById('fullscreenImage').src = imageSrc;
             document.getElementById('fullscreenOverlay').style.display = 'flex';
@@ -447,6 +553,12 @@ design, and gameplay programming.
                 closeFullscreen();
             }
         });
+
+        // Initialize carousels on load
+        window.onload = function() {
+            showSlide('gdd-carousel', 0);
+            showSlide('asg-carousel', 0);
+        };
     </script>
 </body>
 </html>
