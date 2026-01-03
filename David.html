@@ -348,28 +348,16 @@ design, and gameplay programming.
                         <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Game Design Document (GDD) Screenshots</h3>
                         <div id="gdd-carousel" class="carousel-container mx-auto">
                             <div class="carousel-slide active" data-index="0">
-                                <img src="DavidDock/GDD_1.png" alt="GDD Screenshot 1" onclick="openFullscreen(this.src)">
+                                <img src="DavidDock/GDD-1.png" alt="GDD Screenshot 1" onclick="openFullscreen(this.src)">
                             </div>
                             <div class="carousel-slide" data-index="1">
-                                <img src="DavidDock/GDD_2.png" alt="GDD Screenshot 2" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="2">
-                                <img src="DavidDock/GDD_3.png" alt="GDD Screenshot 3" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="3">
-                                <img src="DavidDock/GDD_4.png" alt="GDD Screenshot 4" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="4">
-                                <img src="DavidDock/GDD_5.png" alt="GDD Screenshot 5" onclick="openFullscreen(this.src)">
+                                <img src="DavidDock/GDD-2.png" alt="GDD Screenshot 2" onclick="openFullscreen(this.src)">
                             </div>
                             <button class="carousel-nav-btn prev" onclick="prevSlide('gdd-carousel')">&#10094;</button>
                             <button class="carousel-nav-btn next" onclick="nextSlide('gdd-carousel')">&#10095;</button>
                             <div class="carousel-dots" id="gdd-dots">
                                 <span class="carousel-dot active" onclick="currentSlide('gdd-carousel', 0)"></span>
                                 <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 1)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 2)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 3)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 4)"></span>
                             </div>
                         </div>
                     </div>
@@ -378,24 +366,34 @@ design, and gameplay programming.
                         <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Art Style Guide (ASG) Screenshots</h3>
                         <div id="asg-carousel" class="carousel-container mx-auto">
                             <div class="carousel-slide active" data-index="0">
-                                <img src="DavidDock/ASG_1.png" alt="ASG Screenshot 1" onclick="openFullscreen(this.src)">
+                                <img src="DavidDock/ASG-1.png" alt="ASG Screenshot 1" onclick="openFullscreen(this.src)">
                             </div>
                             <div class="carousel-slide" data-index="1">
-                                <img src="DavidDock/ASG_2.png" alt="ASG Screenshot 2" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="2">
-                                <img src="DavidDock/ASG_3.png" alt="ASG Screenshot 3" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="3">
-                                <img src="DavidDock/ASG_4.png" alt="ASG Screenshot 4" onclick="openFullscreen(this.src)">
+                                <img src="DavidDock/ASG-2.png" alt="ASG Screenshot 2" onclick="openFullscreen(this.src)">
                             </div>
                             <button class="carousel-nav-btn prev" onclick="prevSlide('asg-carousel')">&#10094;</button>
                             <button class="carousel-nav-btn next" onclick="nextSlide('asg-carousel')">&#10095;</button>
                             <div class="carousel-dots" id="asg-dots">
                                 <span class="carousel-dot active" onclick="currentSlide('asg-carousel', 0)"></span>
                                 <span class="carousel-dot" onclick="currentSlide('asg-carousel', 1)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('asg-carousel', 2)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('asg-carousel', 3)"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Playtesting Report Screenshots</h3>
+                        <div id="playtest-carousel" class="carousel-container mx-auto">
+                            <div class="carousel-slide active" data-index="0">
+                                <img src="DavidDock/Playtest Form Screenshot 1.png" alt="Playtest Form Screenshot 1" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="1">
+                                <img src="DavidDock/Playtest Form Screenshot 2.png" alt="Playtest Form Screenshot 2" onclick="openFullscreen(this.src)">
+                            </div>
+                            <button class="carousel-nav-btn prev" onclick="prevSlide('playtest-carousel')">&#10094;</button>
+                            <button class="carousel-nav-btn next" onclick="nextSlide('playtest-carousel')">&#10095;</button>
+                            <div class="carousel-dots" id="playtest-dots">
+                                <span class="carousel-dot active" onclick="currentSlide('playtest-carousel', 0)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('playtest-carousel', 1)"></span>
                             </div>
                         </div>
                     </div>
@@ -437,6 +435,20 @@ design, and gameplay programming.
                             <li><strong>Charge Attack:</strong> Long buildup releases a powerful swing, dealing a lot of damage.</li>
                             <li><strong>Divine intervention:</strong> When Divine Meter is full, player can call down powerful strike, devastating their opponents as an engaging cinematic plays.</li>
                         </ul>
+                        <p class="text-lg text-gray-700 leading-relaxed mt-6">
+                            I was able to successfully build upon all of these mechanics and program them to the
+                            standard I wanted for vertical slice, which you can check out here:
+                        </p>
+                        <div class="relative pt-[56.25%] w-full h-0 mt-6">
+                            <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
+                                src="https://www.youtube.com/embed/hBYvHdHxsGY?si=up2vX9LnAziZsRsf" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -451,8 +463,8 @@ design, and gameplay programming.
                         <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">UI Video</h3>
                         <div class="relative pt-[56.25%] w-full h-0">
                             <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
-                                src="https://www.youtube.com/embed/4Etu7GeNgwc?si=-9I8s4NLXi48SDYe" 
-                                title="YouTube video player - UI Design" 
+                                src="https://www.youtube.com/embed/Prvnm0YDfbA?si=-VaIDMtEO-TgOoGn" 
+                                title="YouTube video player" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 referrerpolicy="strict-origin-when-cross-origin" 
@@ -499,7 +511,8 @@ design, and gameplay programming.
         // Global function to manage slide index
         const slideIndices = {
             'gdd-carousel': 0,
-            'asg-carousel': 0
+            'asg-carousel': 0,
+            'playtest-carousel': 0
         };
 
         // Function to show a specific slide
@@ -565,6 +578,7 @@ design, and gameplay programming.
         window.onload = function() {
             showSlide('gdd-carousel', 0);
             showSlide('asg-carousel', 0);
+            showSlide('playtest-carousel', 0);
         };
     </script>
 </body>
