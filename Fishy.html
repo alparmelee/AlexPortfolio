@@ -292,12 +292,25 @@
         <header class="w-full flex flex-col items-center">
             <div class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-32">
                 <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-4 leading-tight tracking-tight">
-                    Fishy Business (WIP)
+                    Fishy Business
                 </h1>
             </div>
 
             <div class="w-full mb-24 max-w-4xl">
-                <img src="Thumbnails/Fish.png" alt="Thumbnail for Fishy Business" class="w-full h-auto rounded-xl shadow-lg main-thumbnail" onclick="openFullscreen('Thumbnails/Fish.png')">
+                <img src="Fishy/FB-Poster.png" alt="Fishy Business Poster" class="w-full h-auto rounded-xl shadow-lg main-thumbnail" onclick="openFullscreen('Fishy/FB-Poster.png')">
+            </div>
+
+            <div class="w-full mb-24 max-w-4xl">
+                <div class="relative pt-[56.25%] w-full h-0">
+                    <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
+                        src="https://www.youtube.com/embed/sI6E5IZVMcA?si=vhn7FhTovD9LboFG" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
             
             <div class="w-full max-w-2xl mx-auto mb-32 project-card p-10">
@@ -308,7 +321,7 @@
                     </tr>
                     <tr>
                         <td class="info-label">Duration:</td>
-                        <td class="info-value">September 2025 – December 2025 (WIP)</td>
+                        <td class="info-value">September 2025 – December 2025</td>
                     </tr>
                     <tr>
                         <td class="info-label">Team size:</td>
@@ -325,7 +338,10 @@
                 </table>
 
                 <p class="text-xl text-gray-700 leading-relaxed mx-auto text-left">
-                    Fishy Business is a 2D Tower Defense mobile game, set to release in December 2025. Catch fish in the water and sell them to grow your fisherman business and save your people! Currently I am the producer of the game and I also worked on UI design.
+                    Fishy Business is a 2D Tower Defense mobile game, set to release in December 2025.
+                    Catch fish in the water and sell them to grow your fisherman business and save your
+                    people! I was the Producer of this project and I also worked on UI design and
+                    implementation.
                 </p>
             </div>
 
@@ -339,9 +355,24 @@
                     
                     <div class="w-full mb-12">
                         <p class="text-lg text-gray-700 leading-relaxed mb-4">
-                            As the Producer, I lead over a team of seven, scheduling meetings and delegating tasks on a weekly basis. Again, communication is very important here. Team collaboration is crucial to ensure that all standards are set from the get-go and deadlines are met successfully. As Producer, I was also heavily involved in handling the documentation for the game, including the GDD, ASG, team contracts, and more.
+                            As Producer, I led a team of seven, scheduling meetings and delegating tasks on a
+                            weekly basis. I organized a development timeline that ensured each team member
+                            knew what to work on at all times, strengthening overall production. I was also heavily
+                            involved in handling the documentation for the game, including the GDD, ASG, Product
+                            Backlog, team contracts, and more. Strong communication and team collaboration was
+                            crucial to ensure that all standards are set from the get-go and deadlines are met
+                            successfully. Here are my contributions as Producer.
                         </p>
                         
+                    </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Development Timeline Screenshot for GDD + ASG</h3>
+                        <div class="carousel-container mx-auto">
+                            <div class="carousel-slide active" data-index="0">
+                                <img src="FishyDoc/FB-GDD+ASG.png" alt="Development Timeline Screenshot for GDD + ASG" onclick="openFullscreen(this.src)">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="w-full max-w-4xl mx-auto mb-16">
@@ -409,20 +440,78 @@
                     <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">User Interface (UI) Design</h2>
                     
                     <div class="w-full mb-12 max-w-4xl">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            As UI Designer, I implemented all UI elements in game, providing the player with ease
+                            of navigation. Since this is a mobile game, I needed to make sure all elements fit
+                            correctly on a phone screen as well as implementing touch functionality. I utilized a
+                            series of widget blueprints and a bit of code in order to accomplish the intended goals
+                            for this project, and I think it turned out pretty good! Here are my contributions as UI
+                            Designer.
+                        </p>
+                    </div>
+
+                    <div class="w-full mb-12 max-w-4xl">
 
                         <div class="ui-comparison-container">
-                            <div class="ui-image-card" onclick="openFullscreen('Fishy/Main Menu.png')">
-                                <img src="Fishy/Main Menu.png" alt="Fishy Business Main Menu" loading="lazy">
-                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Main Menu Design</h4>
+                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Title.png')">
+                                <img src="Fishy/FB-Title.png" alt="Main Menu" loading="lazy">
+                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Main Menu</h4>
                                 <p class="text-md text-gray-600 text-center">
-                                    Designed for clear, immediate access to starting the game, quitting, shopping, and settings, with a visually appealing layout to engage users right away.
+                                    Button layouts for Start, Settings, Shop, and Quit.
                                 </p>
                             </div>
-                            <div class="ui-image-card" onclick="openFullscreen('Fishy/Pause Menu.png')">
-                                <img src="Fishy/Pause Menu.png" alt="Fishy Business Pause Menu" loading="lazy">
-                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Pause Menu Design</h4>
+                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Settings.png')">
+                                <img src="Fishy/FB-Settings.png" alt="Settings Menu" loading="lazy">
+                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Settings Menu</h4>
                                 <p class="text-md text-gray-600 text-center">
-                                    A simple, focused interface that allows quick return to the game, restarting the level or quitting.
+                                    Options to change certain audio settings in game.
+                                </p>
+                            </div>
+                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Shop.png')">
+                                <img src="Fishy/FB-Shop.png" alt="Shop Menu" loading="lazy">
+                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Shop Menu</h4>
+                                <p class="text-md text-gray-600 text-center">
+                                    Buy optional cosmetics with in-game currency.
+                                </p>
+                            </div>
+                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Lvl-Select.png')">
+                                <img src="Fishy/FB-Lvl-Select.png" alt="Level Select" loading="lazy">
+                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Level Select</h4>
+                                <p class="text-md text-gray-600 text-center">
+                                    Select which level you want to play once you start the game.
+                                </p>
+                            </div>
+                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-HUD.png')">
+                                <img src="Fishy/FB-HUD.png" alt="In-Game HUD" loading="lazy">
+                                <h4 class="text-xl font-semibold text-gray-800 mt-4">In-Game HUD</h4>
+                                <p class="text-md text-gray-600 text-center">
+                                    On the left, displays wave count and lives remaining. On the right,
+                                    displays each selectable fisherman with their value, amount of fish caught, option to sell
+                                    fish, and amount of money the player currently has.
+                                </p>
+                            </div>
+                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Upgrade-Menu.png')">
+                                <img src="Fishy/FB-Upgrade-Menu.png" alt="Upgrade Menu" loading="lazy">
+                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Upgrade Menu</h4>
+                                <p class="text-md text-gray-600 text-center">
+                                    When a fisherman is selected, displays three different upgrades to
+                                    choose from, depending on the fisherman type.
+                                </p>
+                            </div>
+                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Pause-Menu.png')">
+                                <img src="Fishy/FB-Pause-Menu.png" alt="Pause Menu" loading="lazy">
+                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Pause Menu</h4>
+                                <p class="text-md text-gray-600 text-center">
+                                    Sets the game paused and gives options to Resume, view Settings, or
+                                    Quit to Main Menu.
+                                </p>
+                            </div>
+                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Game-Over.png')">
+                                <img src="Fishy/FB-Game-Over.png" alt="Game Over" loading="lazy">
+                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Game Over</h4>
+                                <p class="text-md text-gray-600 text-center">
+                                    Ends the game and gives options to Continue, Play Again, or Return to
+                                    Main Menu.
                                 </p>
                             </div>
                         </div>
@@ -435,7 +524,13 @@
                 <div class="project-card p-12 flex flex-col items-center">
                     <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Reflection</h2>
                     <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-left">
-                        Throughout development of Fishy Business, I’d say I’ve learned a good amount so far. I’ve learned that making a mobile game in Unreal Engine is harder than it looks, the importance of team communication and meetings, how rewarding the results can be when properly sticking to schedules and deadlines, and overall aspects of the multiple responsibilities a producer needs to juggle during production. In terms of UI Design, I’ve learned to adjust my PC minded brain to fit for mobile users, changing my workflow in the process.
+                        Throughout development of Fishy Business, I'd say I've learned a great amount on
+                        project management, UI design and how to make a mobile game. I've learned the
+                        importance of team communication and meetings, how rewarding the results can be
+                        when properly sticking to schedules and deadlines, and overall aspects of the multiple
+                        responsibilities a producer needs to juggle during production. In terms of UI design, I've
+                        learned to adjust my PC minded brain to fit for mobile users, changing my workflow in
+                        the process.
                     </p>
                 </div>
             </section>
